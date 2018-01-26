@@ -14,7 +14,7 @@ public class MenuStart extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
 		// TODO Auto-generated method stub
-		startBackground = new Image("res/testMenuBackground.png");
+		startBackground = new Image("/res/testMenuBackground.png");
 
 
 
