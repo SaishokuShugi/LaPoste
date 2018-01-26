@@ -4,7 +4,11 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Etat1 extends BasicGameState {
+public class PhaseVoiture extends BasicGameState {
+
+	public PhaseVoiture() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException {
