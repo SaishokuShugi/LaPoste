@@ -5,6 +5,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Game extends StateBasedGame
 {
+	protected static AppGameContainer app;
 	public Game(String name)
 	{
 		super(name);
@@ -27,7 +28,7 @@ public class Game extends StateBasedGame
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		AppGameContainer app;
+		
 		try
 		{
 			app = new AppGameContainer(new Game("jeu"));
