@@ -14,7 +14,8 @@ public class Game extends StateBasedGame {
 		// TODO Auto-generated method stub
 		//
 
-		addState(new Etat1());
+		addState(new MenuStart());
+		addState(new PhaseVoiture());
 		
 		//gc.setTargetFrameRate(120);
 
