@@ -24,6 +24,7 @@ public class PhaseVoiture extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawImage(VoitureHero, VoitureX, VoitureY);
+
 	}
 
 	@Override
