@@ -13,9 +13,7 @@ public class Game extends StateBasedGame {
 	public void initStatesList(GameContainer gc) throws SlickException {
 		// TODO Auto-generated method stub
 		//
-		
-		gc.setTargetFrameRate(120);
-		
+		addState(new Etat1());
 		
 	}
 
@@ -24,10 +22,9 @@ public class Game extends StateBasedGame {
 		AppGameContainer app;
 		try {
 		app = new AppGameContainer(new Game("jeu"));
-		app.setDisplayMode(800, 600, false);
+		app.setDisplayMode(1600, 900, false);
 		app.setShowFPS(true);
 		app.start();
-		app.setVSync(true);
 		} catch(SlickException e){
 		e.printStackTrace();
 		}
