@@ -14,7 +14,7 @@ public class Game extends StateBasedGame {
 		// TODO Auto-generated method stub
 		//
 		
-		gc.setTargetFrameRate(144);
+		//gc.setTargetFrameRate(120);
 		
 		
 	}
@@ -24,9 +24,10 @@ public class Game extends StateBasedGame {
 		AppGameContainer app;
 		try {
 		app = new AppGameContainer(new Game("jeu"));
-		app.setDisplayMode(800, 600, false);
+		app.setDisplayMode(1600, 900, false);
 		app.setShowFPS(true);
 		app.start();
+		app.setVSync(false);
 		} catch(SlickException e){
 		e.printStackTrace();
 		}
