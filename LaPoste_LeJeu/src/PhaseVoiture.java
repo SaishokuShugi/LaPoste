@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -11,7 +13,7 @@ public class PhaseVoiture extends BasicGameState {
 	protected float VoitureX = Game.app.getWidth() * .5f+128f;
 	protected float VoitureY = Game.app.getHeight() - 300f;
 	protected Image VoitureHero;
-	//protected ArrayList<Voiture> Voiture;
+	protected ArrayList<VoitureUp> VoitureHaut;
 
 	public PhaseVoiture() {
 	}
