@@ -112,7 +112,7 @@ public class PhasePlateform extends BasicGameState
 		imgPerso = perso.getSprite(8, 1);
 		//Platforms.add(new Rectangle(0, Game.app.getHeight() - 10, Game.app.getWidth(), 20));
 		Pperso = new Vector2f(100, 20);
-		hitboxPerso = new Rectangle(Pperso.x+10, Pperso.y-15, 42-20, 74-15); 
+		hitboxPerso = new Rectangle(Pperso.x+10, Pperso.y+15, 42-20, 74-15); 
 		Vperso = new Vector2f(0, 0);
 		initmap();
 
@@ -127,6 +127,7 @@ public class PhasePlateform extends BasicGameState
 					g.drawImage(bgtex[j + 4 * i], 400 * j, 225 * i);
 				}
 		g.drawImage(imgPerso, Pperso.x, Pperso.y);
+		g.draw(hitboxPerso);
 		Game.shuriken.draw(0, 0);
 		Game.slicker.drawString(20, 5, " X " + Integer.toString(Game.nlettres));
 	}
@@ -163,7 +164,7 @@ public class PhasePlateform extends BasicGameState
 		Vector2f opp = Pperso.copy();
 
 		Pperso.add(scaledV);
-		hitboxPerso.setLocation(Pperso);
+		hitboxPerso.setBounds(Pperso.x+10, Pperso.y+40, 42-20, 74-40); 
 		for (Rectangle rectangle : Platforms)
 			{
 				if (rectangle.intersects(hitboxPerso))
@@ -171,7 +172,7 @@ public class PhasePlateform extends BasicGameState
 						onGround = true;
 						Pperso = opp;
 						hitboxPerso.setLocation(Pperso);
-						Vperso.y = -.03f;
+						Vperso.y = Vperso.y>0.?-.03f:.03f;
 						Vperso.x *= 0;
 						break;
 					}
