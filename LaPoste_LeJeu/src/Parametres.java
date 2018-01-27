@@ -61,6 +61,12 @@ public class Parametres extends BasicGameState
 		{
 			g.drawRect(90, 90 + ((float) choix * 100), 200, 50);
 		}
+		Game.slicker.drawString(900, 20, "Commandes voiture :");
+		Game.slicker.drawString(950, 70, "Flèches <- -> Permet de rouler à gauche/droite,");
+		Game.slicker.drawString(1040, 120, "Flèches ^ v Permet d'accellerer / freiner.");
+		Game.slicker.drawString(1080, 170, "Commandes à pied :");
+		Game.slicker.drawString(1100, 220, "Flèche ^ ou espace pour sauter,");
+		Game.slicker.drawString(1080, 270, "Flèches <- -> Permet de marcher.");
 	}
 
 	@Override
