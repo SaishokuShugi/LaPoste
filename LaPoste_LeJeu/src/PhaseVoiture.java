@@ -95,7 +95,7 @@ public class PhaseVoiture extends BasicGameState
 		VoitureHitbox = new Rectangle(VoitureX + VoitureHero.getWidth() / 4f, VoitureY + VoitureHero.getWidth() / 6f,
 				VoitureHero.getWidth() / 2f, VoitureHero.getHeight() * 2f / 3f);
 		initBords();
-		perte = new Animation(new SpriteSheet("res/PerteCourrier.png",128,128),100);
+		perte = new Animation(new SpriteSheet("res/PerteCourrier.png",128,128),50);
 	}
 
 	@Override
