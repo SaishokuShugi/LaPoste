@@ -11,11 +11,10 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PhaseVoiture extends BasicGameState
 {
 
-	protected float VoitureX = Game.app.getWidth() * .5f+128f;
-	protected float VoitureY = Game.app.getHeight() - 300f;
-	protected Image VoitureHero;
-	protected ArrayList<VoitureUp> VoitureHaut;
-
+	protected static float				VoitureX	= Game.app.getWidth() * .5f + 128f;
+	protected static float				VoitureY	= Game.app.getHeight() - 300f;
+	protected static Image				VoitureHero;
+	protected static ArrayList<Voiture>	VoitureHaut	= new ArrayList<Voiture>();
 
 	public PhaseVoiture()
 	{
@@ -24,13 +23,19 @@ public class PhaseVoiture extends BasicGameState
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
+
 		VoitureHero = new Image("res/Car.png");
+		VoitureHaut.add(new VoitureUp());
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(VoitureHero, VoitureX, VoitureY);
+		for (Voiture voiture : VoitureHaut)
+		{
+			voiture.render(g);
+		}
 
 	}
 
@@ -42,6 +47,10 @@ public class PhaseVoiture extends BasicGameState
 			VoitureX -= delta * 1.;
 		if (input.isKeyDown(Input.KEY_RIGHT))
 			VoitureX += delta * 1.;
+		for (Voiture voiture : VoitureHaut)
+		{
+			voiture.update(delta);
+		}
 	}
 
 	@Override
