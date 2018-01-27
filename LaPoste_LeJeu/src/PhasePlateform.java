@@ -127,6 +127,8 @@ public class PhasePlateform extends BasicGameState
 					g.drawImage(bgtex[j + 4 * i], 400 * j, 225 * i);
 				}
 		g.drawImage(imgPerso, Pperso.x, Pperso.y);
+		Game.shuriken.draw(0, 0);
+		Game.slicker.drawString(20, 5, " X " + Integer.toString(Game.nlettres));
 	}
 
 	@Override
