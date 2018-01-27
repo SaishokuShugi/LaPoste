@@ -73,31 +73,30 @@ public class PhasePlateform extends BasicGameState
 						Platforms.add(new Rectangle(i * Game.app.getWidth() * .25f,
 								(j + 1) * Game.app.getHeight() * .25f, Game.app.getWidth() * .25f, 1));
 				}
-		
-		
-		Platforms.add(new Rectangle(400+74,225+10,100,1));
-		Platforms.add(new Rectangle(400+75,225+113,99,1));
-		Platforms.add(new Rectangle(400+218,225+60,105,1));
-		Platforms.add(new Rectangle(400+221,225+150,101,1));
-		Platforms.add(new Rectangle(0+24,450+3,16,1));
-		Platforms.add(new Rectangle(0+80,450+35,41,1));
-		Platforms.add(new Rectangle(0+181,450+79,23,1));
-		Platforms.add(new Rectangle(0+147,450+150,25,1));
-		Platforms.add(new Rectangle(0+207,450+142,17,1));
-		Platforms.add(new Rectangle(0+263,450+114,17,1));
-		Platforms.add(new Rectangle(0+317,450+78,17,1));
-		Platforms.add(new Rectangle(0+372,450+51,18,1));
-		Platforms.add(new Rectangle(0+311,450+18,18,1));
-		Platforms.add(new Rectangle(0+256,450+3,16,1));
-		Platforms.add(new Rectangle(800+6,675+5,18,1));
-		Platforms.add(new Rectangle(800+57,675+13,21,1));
-		Platforms.add(new Rectangle(800+109,675+18,26,1));
-		Platforms.add(new Rectangle(800+183,675+58,40,1));
-		Platforms.add(new Rectangle(800+186,675+142,34,1));
-		Platforms.add(new Rectangle(800+273,675+19,26,1));
-		Platforms.add(new Rectangle(800+341,675+18,26,1));
-		Platforms.add(new Rectangle(800+384,675+5,14,1)); 
-		
+
+		Platforms.add(new Rectangle(400 + 74, 225 + 10, 100, 1));
+		Platforms.add(new Rectangle(400 + 75, 225 + 113, 99, 1));
+		Platforms.add(new Rectangle(400 + 218, 225 + 60, 105, 1));
+		Platforms.add(new Rectangle(400 + 221, 225 + 150, 101, 1));
+		Platforms.add(new Rectangle(0 + 24, 450 + 3, 16, 1));
+		Platforms.add(new Rectangle(0 + 80, 450 + 35, 41, 1));
+		Platforms.add(new Rectangle(0 + 181, 450 + 79, 23, 1));
+		Platforms.add(new Rectangle(0 + 147, 450 + 150, 25, 1));
+		Platforms.add(new Rectangle(0 + 207, 450 + 142, 17, 1));
+		Platforms.add(new Rectangle(0 + 263, 450 + 114, 17, 1));
+		Platforms.add(new Rectangle(0 + 317, 450 + 78, 17, 1));
+		Platforms.add(new Rectangle(0 + 372, 450 + 51, 18, 1));
+		Platforms.add(new Rectangle(0 + 311, 450 + 18, 18, 1));
+		Platforms.add(new Rectangle(0 + 256, 450 + 3, 16, 1));
+		Platforms.add(new Rectangle(800 + 6, 675 + 5, 18, 1));
+		Platforms.add(new Rectangle(800 + 57, 675 + 13, 21, 1));
+		Platforms.add(new Rectangle(800 + 109, 675 + 18, 26, 1));
+		Platforms.add(new Rectangle(800 + 183, 675 + 58, 40, 1));
+		Platforms.add(new Rectangle(800 + 186, 675 + 142, 34, 1));
+		Platforms.add(new Rectangle(800 + 273, 675 + 19, 26, 1));
+		Platforms.add(new Rectangle(800 + 341, 675 + 18, 26, 1));
+		Platforms.add(new Rectangle(800 + 384, 675 + 5, 14, 1));
+
 	}
 
 	@Override
@@ -110,9 +109,10 @@ public class PhasePlateform extends BasicGameState
 
 		perso = new SpriteSheet("res/Postier.png", 42, 74);
 		imgPerso = perso.getSprite(8, 1);
-		//Platforms.add(new Rectangle(0, Game.app.getHeight() - 10, Game.app.getWidth(), 20));
+		// Platforms.add(new Rectangle(0, Game.app.getHeight() - 10,
+		// Game.app.getWidth(), 20));
 		Pperso = new Vector2f(100, 20);
-		hitboxPerso = new Rectangle(Pperso.x+10, Pperso.y+15, 42-20, 74-15); 
+		hitboxPerso = new Rectangle(Pperso.x + 10, Pperso.y + 15, 42 - 20, 74 - 15);
 		Vperso = new Vector2f(0, 0);
 		initmap();
 
@@ -164,7 +164,7 @@ public class PhasePlateform extends BasicGameState
 		Vector2f opp = Pperso.copy();
 
 		Pperso.add(scaledV);
-		hitboxPerso.setBounds(Pperso.x+10, Pperso.y+40, 42-20, 74-40); 
+		hitboxPerso.setBounds(Pperso.x + 10, Pperso.y + 40, 42 - 20, 74 - 40);
 		for (Rectangle rectangle : Platforms)
 			{
 				if (rectangle.intersects(hitboxPerso))
@@ -172,13 +172,14 @@ public class PhasePlateform extends BasicGameState
 						onGround = true;
 						Pperso = opp;
 						hitboxPerso.setLocation(Pperso);
-						Vperso.y = Vperso.y>0.?-.03f:.03f;
+						Vperso.y = Vperso.y > 0. ? -.03f : .03f;
 						Vperso.x *= 0;
 						break;
 					}
 			}
 		if (Vperso.y > 0)
 			onGround = false;
+		Pperso.x = Pperso.x < 0 ? 0 : Pperso.x > Game.app.getWidth() - 40 ? Game.app.getWidth() - 40 : Pperso.x;
 	}
 
 	@Override
