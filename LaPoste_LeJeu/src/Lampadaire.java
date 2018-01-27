@@ -18,7 +18,7 @@ public class Lampadaire
 		x = Game.app.getWidth() * .5f - 32;
 		SpriteSheet ss = new SpriteSheet("res/Lampadaires.png", 64, 64);
 		image = ss.getSprite(0, Game.random.nextInt(2));
-		hitbox = new Circle(x + 32, y + 32, 32);
+		hitbox = new Circle(x, y , 32);
 	}
 
 	public void render(Graphics g)
@@ -35,7 +35,7 @@ public class Lampadaire
 	public boolean update(int delta)
 	{
 		y += delta * PhaseVoiture.speed * .1;
-		hitbox.setLocation(x + 32, y + 32);
+		hitbox.setLocation(x, y);
 		if (!destroyed && (PhaseVoiture.VoitureHitbox.intersects(hitbox)))
 			{
 				timedest = PhaseVoiture.time;
