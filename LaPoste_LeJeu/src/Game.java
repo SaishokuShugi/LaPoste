@@ -67,7 +67,7 @@ public class Game extends StateBasedGame
 		pouet = new Sound("res/pouetpouet-SF.ogg");
 		boom = new Animation(new SpriteSheet("res/explosion.png", 128, 128), 100);
 		random = new Random();
-		shuriken = new Image("res/envelloppeShutiken.png");
+		shuriken = new Image("res/enveloppeShuriken.png");
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new PhasePlateform());
