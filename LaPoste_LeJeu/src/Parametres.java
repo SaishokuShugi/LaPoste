@@ -29,7 +29,7 @@ public class Parametres extends BasicGameState
 		g.fillRect(90, 90, 260, 50);
 		g.fillRect(90, 190, 260, 50);
 		g.fillRect(90, 290, 200, 50);
-		Game.slicker.drawString(100, 100, "Difficulte :");
+		Game.slicker.drawString(100, 100, "Difficultee :");
 		Game.slicker.drawString(100, 200, "Volume :");
 		Game.slicker.drawString(100, 300, "Main Menu");
 		switch (difficulte)

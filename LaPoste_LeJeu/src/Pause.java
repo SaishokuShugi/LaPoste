@@ -15,8 +15,6 @@ public class Pause extends BasicGameState
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
-		// TODO Stub de la méthode généré automatiquement
-
 	}
 
 	@Override
@@ -124,7 +122,6 @@ public class Pause extends BasicGameState
 	@Override
 	public int getID()
 	{
-		// TODO Stub de la méthode généré automatiquement
 		return 4;
 	}
 
