@@ -12,6 +12,7 @@ public class Paramettres extends BasicGameState
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException
 	{
 		// TODO Stub de la méthode généré automatiquement
+		
 
 	}
 

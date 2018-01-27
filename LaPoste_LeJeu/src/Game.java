@@ -10,7 +10,7 @@ public class Game extends StateBasedGame
 {
 	protected static AppGameContainer	app;
 	protected static Input				input;
-	protected static Random				random = new Random();
+	protected static Random				random	= new Random();
 
 	public Game(String name)
 	{

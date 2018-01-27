@@ -33,7 +33,7 @@ public class MenuStart extends BasicGameState
 			slicker.addAsciiGlyphs();
 			slicker.getEffects().add(new ColorEffect(java.awt.Color.white)); // You can change your color here, but you
 																				// can also change it in the render{ ...
-																				// }
+								 												// }
 			slicker.addAsciiGlyphs();
 			slicker.loadGlyphs();
 		} catch (Exception e)
