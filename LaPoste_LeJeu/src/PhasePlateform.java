@@ -73,7 +73,7 @@ public class PhasePlateform extends BasicGameState
 						Platforms.add(new Rectangle(i * Game.app.getWidth() * .25f,
 								(j + 1) * Game.app.getHeight() * .25f, Game.app.getWidth() * .25f, 1));
 				}
-
+		//Platforms.add(new Rectangle(400+a,225+b,))
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class PhasePlateform extends BasicGameState
 
 		perso = new SpriteSheet("res/Postier.png", 42, 74);
 		imgPerso = perso.getSprite(8, 1);
-		Platforms.add(new Rectangle(0, Game.app.getHeight() - 10, Game.app.getWidth(), 20));
+		//Platforms.add(new Rectangle(0, Game.app.getHeight() - 10, Game.app.getWidth(), 20));
 		Pperso = new Vector2f(100, 20);
 		hitboxPerso = new Rectangle(Pperso.x, Pperso.y, 42, 74);
 		Vperso = new Vector2f(0, 0);
