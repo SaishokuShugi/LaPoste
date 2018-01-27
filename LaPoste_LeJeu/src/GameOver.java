@@ -8,21 +8,21 @@ public class GameOver extends BasicGameState
 {
 
 	@Override
-	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException
+	public void init(GameContainer gc, StateBasedGame sgb) throws SlickException
 	{
 		// TODO Stub de la méthode généré automatiquement
 		
 	}
 
 	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		// TODO Stub de la méthode généré automatiquement
 		
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		// TODO Stub de la méthode généré automatiquement
 		
@@ -32,7 +32,7 @@ public class GameOver extends BasicGameState
 	public int getID()
 	{
 		// TODO Stub de la méthode généré automatiquement
-		return 0;
+		return 6;
 	}
 
 }
