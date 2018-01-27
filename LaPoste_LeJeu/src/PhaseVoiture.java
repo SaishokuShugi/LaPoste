@@ -59,7 +59,7 @@ public class PhaseVoiture extends BasicGameState
 		time += delta;
 		Input input = Game.input;
 		VoitureX += vitesseX * delta;
-		vitesseX *= .992;
+		vitesseX *= Math.pow(.992,delta);
 		if (input.isKeyDown(Input.KEY_LEFT))
 			vitesseX -= delta * .01;
 		if (input.isKeyDown(Input.KEY_RIGHT))
