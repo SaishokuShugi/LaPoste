@@ -54,7 +54,7 @@ public class Game extends StateBasedGame
 		slicker.loadGlyphs();
 		input = gc.getInput();
 		Jazzy = new Music("res/Blusy.ogg");
-		boom = new Animation(new SpriteSheet("res/explosion.png",128,128), 10);
+		boom = new Animation(new SpriteSheet("res/explosion.png",128,128),100);
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new Paramettres());
