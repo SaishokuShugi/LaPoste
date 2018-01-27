@@ -17,6 +17,7 @@ public class PhaseVoiture extends BasicGameState
 	protected static ArrayList<Voiture>	Voitures	= new ArrayList<Voiture>();
 	protected int						time		= 0;
 	public static float					speed		= 2.f;
+	protected static float				posroad		= 0;
 	private static float				vitesseX	= 0f;
 
 	public PhaseVoiture()
@@ -35,12 +36,14 @@ public class PhaseVoiture extends BasicGameState
 	{
 		for (int i = 0; i < (int) (Game.app.getHeight() / 128f) + 1; i++)
 			{
-				g.drawImage(Road, Game.app.getWidth() * .5f + 64f, (float) ((i - 1) * 128. + (.1*speed * time) % 128.));
+				g.drawImage(Road, Game.app.getWidth() * .5f + 64f,
+						(float) ((i - 1) * 128. + posroad % 128.));
 			}
 		Road.rotate(180);
 		for (int i = 0; i < (int) (Game.app.getHeight() / 128f) + 1; i++)
 			{
-				g.drawImage(Road, Game.app.getWidth() * .5f - 320f, (float) ((i - 1) * 128. + (.1*speed * time) % 128.));
+				g.drawImage(Road, Game.app.getWidth() * .5f - 320f,
+						(float) ((i - 1) * 128. + posroad % 128.));
 			}
 		Road.rotate(180);
 
@@ -56,29 +59,32 @@ public class PhaseVoiture extends BasicGameState
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
-		time += delta;
 		Input input = Game.input;
+		if(input.isKeyDown(Input.KEY_ESCAPE))
+			sbg.enterState(4);
+		time += delta;
 		VoitureX += vitesseX * delta;
-		vitesseX *= Math.pow(.992,delta);
+		vitesseX *= Math.pow(.992, delta);
 		if (input.isKeyDown(Input.KEY_LEFT))
 			vitesseX -= delta * .01;
 		if (input.isKeyDown(Input.KEY_RIGHT))
 			vitesseX += delta * .01;
 		if (input.isKeyDown(Input.KEY_UP))
-			speed += delta * .01;
+			speed += delta * .001;
 		if (input.isKeyDown(Input.KEY_DOWN))
-			speed -= delta * .01;
-		speed = speed<0?0:speed;
-		
+			speed -= delta * .001;
+		speed = speed < 0 ? 0 : speed;
+		posroad+=.1*speed*delta;
+
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique
-		if ((int) (time / 1200) > (int) ((time - delta) / 1200))
+		if ((int) ((speed - Voiture.v0) * time / 3000) > (int) ((speed - Voiture.v0) * (time - delta) / 3000))
 			{
-				if (Game.random.nextInt(8) <= 1)
+				if (Game.random.nextInt(6) <= 1)
 					Voitures.add(new VoitureUp());
 			}
-		if ((int) ( time / 300) > (int) ((time - delta) / 300))
+		if ((int) ((speed + Voiture.v0) * time / 3000) > (int) ((speed + Voiture.v0) * (time - delta) / 3000))
 			{
-				if (Game.random.nextInt(8) <= 1)
+				if (Game.random.nextInt(6) <= 1)
 					Voitures.add(new VoitureDown());
 			}
 	}
