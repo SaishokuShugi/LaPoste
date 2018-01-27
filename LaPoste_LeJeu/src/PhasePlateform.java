@@ -115,7 +115,7 @@ public class PhasePlateform extends BasicGameState
 				timeP = 0;
 				sbg.enterState(4);
 			}
-		timeP+=delta;
+		timeP += delta;
 		Vperso.scale(.999f);
 		Vperso.y += .001 * delta;
 		if (Game.input.isKeyDown(Input.KEY_LEFT))
@@ -135,6 +135,7 @@ public class PhasePlateform extends BasicGameState
 			}
 		Vector2f scaledV = new Vector2f(delta * Vperso.x, delta * Vperso.y);
 		Vector2f opp = Pperso.copy();
+
 		Pperso.add(scaledV);
 		hitboxPerso.setLocation(Pperso);
 		for (Rectangle rectangle : Platforms)
