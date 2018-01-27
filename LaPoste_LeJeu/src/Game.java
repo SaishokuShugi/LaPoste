@@ -73,6 +73,7 @@ public class Game extends StateBasedGame
 		addState(new PhasePlateform());
 		addState(new Parametres());
 		addState(new Pause());
+		addState(new GameOver());
 		Voiture.voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
 		nlettres /= (Parametres.difficulte + 1);
 
