@@ -14,7 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class MenuStart extends BasicGameState
 {
-	public static Image	startBackground;
+	public static Image	startBackground, R4;
 
 	private static int	choix	= 0;
 	private int			time	= 0;
@@ -24,21 +24,23 @@ public class MenuStart extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
 		// TODO Auto-generated method stub
-		startBackground = new Image("/res/411UuE5sRPL.jpg");
+		startBackground = new Image("/res/back.jpg");
+		R4 = new Image("/res/411UuE5sRPL.png");
 		Game.Jazzy.loop();
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		startBackground.draw(1000, 300);
+		startBackground.draw(0, 0);
+		R4.draw(1000, 550);
 		// g.setColor(new Color(255, 255, 255, 100));
 		// g.fillRect(0, 0, Game.app.getWidth(), Game.app.getHeight());
-		Game.slicker.drawString(700, 400, "Start", Color.lightGray);
-		Game.slicker.drawString(660, 500, "Paramettres", Color.lightGray);
-		Game.slicker.drawString(700, 600, "Exit", Color.lightGray);
-		g.setColor(Color.lightGray);
-		g.drawRect(635, 385 + ((float) choix * 100), 200, 50);
+		Game.slicker.drawString(700, 450, "Start", Color.lightGray);
+		Game.slicker.drawString(660, 550, "Paramettres", Color.lightGray);
+		Game.slicker.drawString(700, 650, "Exit", Color.lightGray);
+		g.setColor(Color.darkGray);
+		g.drawRect(635, 435 + ((float) choix * 100), 200, 50);
 	}
 
 	@Override

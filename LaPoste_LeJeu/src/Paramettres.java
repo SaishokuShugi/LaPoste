@@ -21,7 +21,8 @@ public class Paramettres extends BasicGameState
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		MenuStart.startBackground.draw(1000, 300);
+		MenuStart.startBackground.draw(0, 0);
+		MenuStart.R4.draw(1000, 550);
 		Game.slicker.drawString(100, 100, "Difficulte :");
 		Game.slicker.drawString(100, 200, "Volume");
 		Game.slicker.drawString(100, 300, "Main Menu");
@@ -45,7 +46,7 @@ public class Paramettres extends BasicGameState
 		}
 
 		Game.slicker.drawString(250, 200, Integer.toString(pVolume));
-		g.setColor(Color.lightGray);
+		g.setColor(Color.darkGray);
 		if (choix == 0 | choix == 1)
 		{
 			g.drawRect(240, 90 + ((float) choix * 100), 110, 50);
