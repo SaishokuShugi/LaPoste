@@ -26,7 +26,7 @@ public class Game extends StateBasedGame
 	public static Sound					pouet;
 	public static Animation				boom;
 	public static int					state;
-	public static int					nlettres	= 100;
+	public static int					nlettres	= 48;
 
 	public Game(String name)
 	{
@@ -66,6 +66,7 @@ public class Game extends StateBasedGame
 		addState(new Parametres());
 		addState(new Pause());
 		Voiture.voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
+		nlettres /= (Parametres.difficulte+1);
 
 		// gc.setTargetFrameRate(120);
 
