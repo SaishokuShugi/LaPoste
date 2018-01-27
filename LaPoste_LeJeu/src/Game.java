@@ -21,12 +21,12 @@ public class Game extends StateBasedGame
 	protected static Input				input;
 	protected static Random				random;
 	public static Font					UIFont1;
-	public static UnicodeFont			slicker;
+	public static UnicodeFont			slicker, titre;
 	public static Music					Jazzy;
 	public static Sound					pouet;
 	public static Animation				boom;
 	public static int					state;
-	public static int					nlettres	= 100;
+	public static int					nlettres	= 48;
 
 	public Game(String name)
 	{
@@ -55,6 +55,12 @@ public class Game extends StateBasedGame
 		slicker.getEffects().add(new ColorEffect(java.awt.Color.BLUE));
 		slicker.addAsciiGlyphs();
 		slicker.loadGlyphs();
+		UIFont1 = UIFont1.deriveFont(java.awt.Font.PLAIN, 45.f);
+		titre = new UnicodeFont(UIFont1);
+		titre.addAsciiGlyphs();
+		titre.getEffects().add(new ColorEffect(java.awt.Color.BLUE));
+		titre.addAsciiGlyphs();
+		titre.loadGlyphs();
 		input = gc.getInput();
 		Jazzy = new Music("res/Blusy.ogg");
 		pouet = new Sound("res/pouetpouet-SF.ogg");
@@ -66,6 +72,7 @@ public class Game extends StateBasedGame
 		addState(new Parametres());
 		addState(new Pause());
 		Voiture.voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
+		nlettres /= (Parametres.difficulte+1);
 
 		// gc.setTargetFrameRate(120);
 

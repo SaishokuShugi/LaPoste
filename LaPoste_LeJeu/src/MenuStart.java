@@ -30,15 +30,19 @@ public class MenuStart extends BasicGameState
 		startBackground.draw(0, 0);
 		R4.draw(vx, 550);
 		g.setColor(Color.yellow);
-		g.fillRect(635, 445, 200, 50);
+		g.fillRect(435, 300, 600, 100);
 		g.fillRect(635, 545, 200, 50);
 		g.fillRect(635, 645, 200, 50);
-		Game.slicker.drawString(700, 460, "Start", Color.lightGray);
-		Game.slicker.drawString(660, 560, "Parametres", Color.lightGray);
-		Game.slicker.drawString(700, 660, "Exit", Color.lightGray);
+		g.fillRect(635, 745, 200, 50);
+		Game.slicker.drawString(700, 560, "Start", Color.lightGray);
+		Game.slicker.drawString(660, 660, "Parametres", Color.lightGray);
+		Game.slicker.drawString(700, 760, "Exit", Color.lightGray);
+		Game.titre.drawString(460,320, "xxX_D@rk_£@_P0$t3_87_Xxx ");
 		g.setColor(Color.blue);
 		g.setLineWidth(5);
-		g.drawRect(635, 445 + ((float) choix * 100), 200, 50);
+		g.drawRect(635, 545 + ((float) choix * 100), 200, 50);
+		g.setLineWidth(8);
+		g.drawRect(435, 300, 600, 100);
 	}
 
 	@Override
