@@ -52,7 +52,7 @@ public class PhaseVoiture extends BasicGameState {
 
 	@Override
 	public int getID() {
-		return 1;
+		return 0;
 	}
 
 }

@@ -4,6 +4,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
@@ -15,8 +16,7 @@ public class MenuStart extends BasicGameState
 	public static Image			startBackground;
 	public static Font			UIFont1;
 	public static UnicodeFont	slicker;
-	private static boolean		inMenu;
-	private static int			difficulte, choix = 0;
+	private static int			choix	= 0;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -49,15 +49,30 @@ public class MenuStart extends BasicGameState
 		startBackground.draw(0, 0);
 		g.setColor(new Color(255, 255, 255, 100));
 		g.fillRect(0, 0, Game.app.getWidth(), Game.app.getHeight());
-		slicker.drawString(700, 400, "Start", Color.white);
-		slicker.drawString(660, 500, "Paramettres", Color.white);
-
+		slicker.drawString(700, 400, "Start", Color.lightGray);
+		slicker.drawString(660, 500, "Paramettres", Color.lightGray);
+		g.setColor(Color.lightGray);
+		g.drawRect(125, 225 + ((float) choix * 50), 200, 25);
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int g) throws SlickException
 	{
-		// TODO Auto-generated method stub
+		boolean down =Game.input.isKeyPressed(Input.KEY_DOWN),
+				up = Game.input.isKeyPressed(Input.KEY_UP),
+				enter = Game.input.isKeyPressed(Input.KEY_ENTER);
+		if (down)
+			choix++;
+		else if (up & choix>0)
+			choix--;
+		else if (up & choix==0)
+			choix=4;
+		choix%=5;
+		
+		if (enter)
+		{
+			sbg.enterState(choix);
+		}
 
 	}
 
@@ -65,7 +80,7 @@ public class MenuStart extends BasicGameState
 	public int getID()
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		return 100;
 	}
 
 }
