@@ -28,7 +28,7 @@ public class VoitureUp extends Voiture
 	{
 		speed = (PhaseVoiture.speed-v0)*.1f+(voie?0:.05f);
 		y += delta * speed;
-		return y > Game.app.getHeight();
+		return y > Game.app.getHeight()||y<-129f;
 	}
 
 }
