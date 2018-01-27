@@ -13,7 +13,7 @@ public class VoitureDown extends Voiture
 		voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
 		image = voituresImg.getSprite(Game.random.nextInt(3), Game.random.nextInt(3));
 		image.rotate(180f);
-		hitbox = new Rectangle(x, y, image.getWidth(), image.getHeight());
+		hitbox = new Rectangle(x+image.getWidth()/4f, y+image.getWidth()/6f, image.getWidth()/2f, image.getHeight()*2f/3f);
 		if (voie = Game.random.nextBoolean())
 			x += 128f;
 

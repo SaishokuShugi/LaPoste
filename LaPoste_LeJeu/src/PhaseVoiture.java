@@ -90,7 +90,7 @@ public class PhaseVoiture extends BasicGameState
 		Trottoirs = new SpriteSheet("res/SpriteRoute.png", 256, 256);
 		Toits = new SpriteSheet("res/SpriteToit.png", 256, 256);
 		CentreSprite = new SpriteSheet("res/SpriteCenter.png", 128, 256);
-		VoitureHitbox = new Rectangle(VoitureX, VoitureY, VoitureHero.getWidth(), VoitureHero.getHeight());
+		VoitureHitbox = new Rectangle(VoitureX+VoitureHero.getWidth()/4f, VoitureY+VoitureHero.getWidth()/6f, VoitureHero.getWidth()/2f, VoitureHero.getHeight()*2f/3f);
 		initBords();
 	}
 
