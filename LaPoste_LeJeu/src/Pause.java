@@ -22,7 +22,7 @@ public class Pause extends BasicGameState
 	{
 		MenuStart.startBackground.draw(0, 0);
 		MenuStart.R4.draw(1000, 550);
-		Game.slicker.drawString(100, 100, "Volume");
+		Game.slicker.drawString(100, 100, "Volume :");
 		Game.slicker.drawString(100, 200, "Resume");
 		Game.slicker.drawString(100, 300, "Main Menu");
 		Game.slicker.drawString(250, 100, Integer.toString(pVolume));

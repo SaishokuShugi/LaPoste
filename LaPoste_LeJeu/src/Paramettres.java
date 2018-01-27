@@ -24,7 +24,7 @@ public class Paramettres extends BasicGameState
 		MenuStart.startBackground.draw(0, 0);
 		MenuStart.R4.draw(1000, 550);
 		Game.slicker.drawString(100, 100, "Difficulte :");
-		Game.slicker.drawString(100, 200, "Volume");
+		Game.slicker.drawString(100, 200, "Volume :");
 		Game.slicker.drawString(100, 300, "Main Menu");
 		switch (difficulte)
 		{
