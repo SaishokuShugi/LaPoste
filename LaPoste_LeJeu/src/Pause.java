@@ -7,7 +7,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Pause extends BasicGameState
 {
-	
+	int timer = 0;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
@@ -25,8 +25,13 @@ public class Pause extends BasicGameState
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
-		if (Game.input.isKeyDown(Input.KEY_ESCAPE)||Game.input.isKeyDown(Input.KEY_P))
+		timer += delta;
+		if ((Game.input.isKeyDown(Input.KEY_ESCAPE)||Game.input.isKeyDown(Input.KEY_P)) & timer > 250)
+		{
+			timer = 0;
 			sbg.enterState(Game.state);
+		}
+			
 
 	}
 
