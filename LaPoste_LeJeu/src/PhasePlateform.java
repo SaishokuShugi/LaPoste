@@ -20,6 +20,7 @@ public class PhasePlateform extends BasicGameState
 	private Rectangle					hitboxPerso;
 	private static ArrayList<Rectangle>	Platforms	= new ArrayList<Rectangle>();
 	private Vector2f					Vperso;
+	@SuppressWarnings("unused")
 	private boolean						facingLeft	= false, onGround = false;
 	private boolean[]					isvoid		= new boolean[16];
 	private Image[]						bgtex		= new Image[16];
