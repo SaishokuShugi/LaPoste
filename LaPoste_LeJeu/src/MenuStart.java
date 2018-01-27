@@ -37,7 +37,7 @@ public class MenuStart extends BasicGameState
 		Game.slicker.drawString(700, 560, "Start", Color.lightGray);
 		Game.slicker.drawString(660, 660, "Parametres", Color.lightGray);
 		Game.slicker.drawString(700, 760, "Exit", Color.lightGray);
-		Game.titre.drawString(460,330, "xxX_D@rk_£@_P0$t3_87_Xxx ");
+		Game.titre.drawString(460, 330, "xxX_D@rk_£@_P0$t3_87_Xxx ");
 		g.setColor(Color.blue);
 		g.setLineWidth(5);
 		g.drawRect(635, 545 + ((float) choix * 100), 200, 50);
@@ -50,32 +50,30 @@ public class MenuStart extends BasicGameState
 	{
 		boolean down = Game.input.isKeyPressed(Input.KEY_DOWN), up = Game.input.isKeyPressed(Input.KEY_UP),
 				enter = Game.input.isKeyPressed(Input.KEY_ENTER);
-		
 
 		if (enter)
 		{
 			go = true;
 			Game.pouet.play();
 		}
-		
-		
+
 		if (go & time < 2000)
 		{
 			time += delta;
 			vx += delta;
-		}else if (go)
+		} else if (go)
 		{
 			time = 0;
 			go = false;
 			vx = 1000;
-			
-			if (choix==2)
+
+			if (choix == 2)
 			{
 				System.exit(0);
 			}
 			Game.state = choix;
 			sbg.enterState(choix);
-		}else
+		} else
 		{
 			if (down)
 				choix++;

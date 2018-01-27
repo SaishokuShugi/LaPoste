@@ -188,11 +188,11 @@ public class PhaseVoiture extends BasicGameState
 		if (Game.input.isKeyDown(Input.KEY_DOWN))
 			speed -= delta * .01;
 
-		if (Game.nlettres <=0)
+		if (Game.nlettres <= 0)
 		{
 			sbg.enterState(6, new FadeOutTransition(), new FadeInTransition());
 		}
-		
+
 		speed = speed < 1.5 ? 1.5f : speed;
 
 		VoitureHitbox.setLocation(VoitureX + VoitureHero.getWidth() / 4f, VoitureY + VoitureHero.getWidth() / 6f);

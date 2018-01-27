@@ -8,9 +8,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Pause extends BasicGameState
 {
-	int timer = 0, choix = 0, pVolume = Parametres.pVolume, time = 0;
-	private boolean go = false;
-	private float vx = 1000;
+	int				timer	= 0, choix = 0, pVolume = Parametres.pVolume, time = 0;
+	private boolean	go		= false;
+	private float	vx		= 1000;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
@@ -39,9 +39,9 @@ public class Pause extends BasicGameState
 		Game.slicker.drawString(1080, 170, "Commandes à pied :");
 		Game.slicker.drawString(1100, 220, "Fleche ^ ou espace pour sauter,");
 		Game.slicker.drawString(1080, 270, "Fleches <- -> Permet de marcher.");
-//		
-//		Game.slicker.drawString(x, y, text);
-		
+		//
+		// Game.slicker.drawString(x, y, text);
+
 		g.setLineWidth(5);
 		g.setColor(Color.blue);
 		if (choix == 0)
@@ -63,8 +63,6 @@ public class Pause extends BasicGameState
 
 		timer += delta;
 
-		
-
 		if (choix == 0)
 		{
 			if (right)
@@ -80,7 +78,7 @@ public class Pause extends BasicGameState
 			pVolume %= 100;
 			gc.setMusicVolume(((float) (pVolume)) / 100);
 		}
-		if (((enter & !(choix==0)) | Game.input.isKeyDown(Input.KEY_ESCAPE) || Game.input.isKeyDown(Input.KEY_P))& timer > 250)
+		if (((enter & !(choix == 0)) | Game.input.isKeyDown(Input.KEY_ESCAPE) || Game.input.isKeyDown(Input.KEY_P)) & timer > 250)
 		{
 			Game.pouet.play();
 			go = true;
@@ -88,7 +86,7 @@ public class Pause extends BasicGameState
 			{
 				choix = 1;
 			}
-			
+
 		}
 		if (go & time < 2000)
 		{
@@ -96,7 +94,7 @@ public class Pause extends BasicGameState
 			vx += delta;
 		} else if (go)
 		{
-			
+
 			if (choix == 1)
 			{
 				time = 0;
@@ -104,7 +102,7 @@ public class Pause extends BasicGameState
 				vx = 1000;
 				timer = 0;
 				sbg.enterState(Game.state);
-			} else 
+			} else
 			{
 				time = 0;
 				go = false;
@@ -112,7 +110,7 @@ public class Pause extends BasicGameState
 				Game.state = 100;
 				sbg.enterState(100);
 			}
-		}else 
+		} else
 		{
 			if (down)
 			{
