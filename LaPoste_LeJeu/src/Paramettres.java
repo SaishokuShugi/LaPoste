@@ -7,12 +7,11 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Paramettres extends BasicGameState
 {
 
-
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
 		Game.Difficultee = 1;
-		
+
 	}
 
 	@Override
@@ -24,7 +23,7 @@ public class Paramettres extends BasicGameState
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int g) throws SlickException
 	{
-		
+
 	}
 
 	@Override
