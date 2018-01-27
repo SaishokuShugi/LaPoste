@@ -9,22 +9,22 @@ public class Paramettres extends BasicGameState
 
 
 	@Override
-	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException
+	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
 		Game.Difficultee = 1;
 		
 	}
 
 	@Override
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		MenuStart.startBackground.draw(75, 0);
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
+	public void update(GameContainer gc, StateBasedGame sbg, int g) throws SlickException
 	{
-
+		
 	}
 
 	@Override

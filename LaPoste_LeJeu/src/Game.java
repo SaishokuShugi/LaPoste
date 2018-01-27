@@ -6,6 +6,7 @@ import java.util.Random;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
@@ -19,6 +20,7 @@ public class Game extends StateBasedGame
 	protected static int				Difficultee;
 	public static Font					UIFont1;
 	public static UnicodeFont			slicker;
+	public static Music 				Jazzy;
 	
 
 	public Game(String name)
