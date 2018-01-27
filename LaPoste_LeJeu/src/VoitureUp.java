@@ -29,6 +29,7 @@ public class VoitureUp extends Voiture
 			{
 				timedest = PhaseVoiture.time;
 				destroyed = true;
+				PhaseVoiture.iscarhit =true;
 			}
 		return y > Game.app.getHeight() || y < -129f;
 

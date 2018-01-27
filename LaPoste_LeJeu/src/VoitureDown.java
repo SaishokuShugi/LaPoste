@@ -28,6 +28,8 @@ public class VoitureDown extends Voiture
 			{
 				timedest = PhaseVoiture.time;
 				destroyed = true;
+				PhaseVoiture.iscarhit =true;
+
 			}
 		return y > Game.app.getHeight();
 

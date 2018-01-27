@@ -40,6 +40,7 @@ public class Lampadaire
 			{
 				timedest = PhaseVoiture.time;
 				destroyed = true;
+				PhaseVoiture.iscarhit =true;
 			}
 		return y > Game.app.getHeight() || y < -129f;
 	}
