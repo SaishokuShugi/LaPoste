@@ -4,7 +4,7 @@ import org.newdawn.slick.SpriteSheet;
 public class Animation
 {
 	private SpriteSheet	ss;
-	private int			f;
+	public int			f;
 
 	public Animation(SpriteSheet ss, int f)
 	{

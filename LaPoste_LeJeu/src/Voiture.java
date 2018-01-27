@@ -8,14 +8,30 @@ public abstract class Voiture
 	protected Image					image;
 	protected float					x, y, speed;
 	protected static SpriteSheet	voituresImg;
-	protected static float			v0	= 3f;
+	protected static float			v0			= 3f;
 	protected boolean				voie;
-	protected Rectangle 			hitbox;
-	protected boolean 				destroyed= false;
+	protected Rectangle				hitbox;
+	protected boolean				destroyed	= false;
+	protected int					timedest	= 0;
+	public boolean render(Graphics g)
+	{
+		if (destroyed)
+			{
+				if ((PhaseVoiture.time - timedest) < 16 * Game.boom.f)
+					{
+						System.out.println(PhaseVoiture.time - timedest);
+						Game.boom.draw(x, y, g, PhaseVoiture.time - timedest);
+						return false;
+					} else
+					{
+						return true;
+					}
+			}
+		g.drawImage(image, x, y);
+		return false;
+	}
 
-	public abstract void render(Graphics g);
 
-	
 	public abstract boolean update(int delta);
 
 }

@@ -20,7 +20,7 @@ public class PhaseVoiture extends BasicGameState
 	protected static SpriteSheet			Trottoirs, Toits, CentreSprite;
 	protected static ArrayList<Voiture>		Voitures		= new ArrayList<Voiture>();
 	protected static ArrayList<Lampadaire>	lampes			= new ArrayList<Lampadaire>();
-	protected int							time			= 0, timeP = 0;
+	public static int						time			= 0, timeP = 0;
 	public static float						speed			= 2.f;
 	protected static float					posroad			= 0, postoit = 0;
 	private static float					vitesseX		= 0f;
@@ -90,7 +90,7 @@ public class PhaseVoiture extends BasicGameState
 		Trottoirs = new SpriteSheet("res/SpriteRoute.png", 256, 256);
 		Toits = new SpriteSheet("res/SpriteToit.png", 256, 256);
 		CentreSprite = new SpriteSheet("res/SpriteCenter.png", 128, 256);
-		VoitureHitbox = new Rectangle(VoitureX,VoitureY,VoitureHero.getWidth(),VoitureHero.getHeight());
+		VoitureHitbox = new Rectangle(VoitureX, VoitureY, VoitureHero.getWidth(), VoitureHero.getHeight());
 		initBords();
 	}
 
@@ -128,11 +128,7 @@ public class PhaseVoiture extends BasicGameState
 
 		g.drawImage(VoitureHero, VoitureX, VoitureY);
 
-		for (Voiture voiture : Voitures)
-			{
-				voiture.render(g);
-					
-			}
+		Voitures.removeIf((Voiture Voitures) -> (Voitures.render(g)));
 		for (Lampadaire l : lampes)
 			{
 				l.render(g);
@@ -172,7 +168,7 @@ public class PhaseVoiture extends BasicGameState
 			speed -= delta * .01;
 
 		speed = speed < 1.5 ? 1.5f : speed;
-		
+
 		VoitureHitbox.setLocation(VoitureX, VoitureY);
 
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique
@@ -201,8 +197,6 @@ public class PhaseVoiture extends BasicGameState
 			updateToit();
 	}
 
-	
-	
 	@Override
 	public int getID()
 	{
