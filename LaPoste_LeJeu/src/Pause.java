@@ -75,6 +75,7 @@ public class Pause extends BasicGameState
 		}
 		if (((enter & !(choix==0)) | Game.input.isKeyDown(Input.KEY_ESCAPE) || Game.input.isKeyDown(Input.KEY_P))& timer > 250)
 		{
+			Game.pouet.play();
 			go = true;
 			if ((Game.input.isKeyDown(Input.KEY_ESCAPE) || Game.input.isKeyDown(Input.KEY_P) | (choix == 1 & enter)) & timer > 250)
 			{

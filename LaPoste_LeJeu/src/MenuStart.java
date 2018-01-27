@@ -51,6 +51,7 @@ public class MenuStart extends BasicGameState
 		if (enter)
 		{
 			go = true;
+			Game.pouet.play();
 		}
 		
 		

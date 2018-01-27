@@ -9,6 +9,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
@@ -22,6 +23,7 @@ public class Game extends StateBasedGame
 	public static Font					UIFont1;
 	public static UnicodeFont			slicker;
 	public static Music					Jazzy;
+	public static Sound					pouet;
 	public static Animation				boom;
 	public static int					state;
 	public static int					nlettres	= 100;
@@ -55,6 +57,7 @@ public class Game extends StateBasedGame
 		slicker.loadGlyphs();
 		input = gc.getInput();
 		Jazzy = new Music("res/Blusy.ogg");
+		pouet = new Sound("res/pouetpouet-SF.ogg");
 		boom = new Animation(new SpriteSheet("res/explosion.png", 128, 128), 100);
 		random = new Random();
 		addState(new MenuStart());

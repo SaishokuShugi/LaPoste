@@ -113,7 +113,7 @@ public class Paramettres extends BasicGameState
 		if (enter & choix == 2)
 		{
 			go = true;
-
+			Game.pouet.play();
 		}
 		if (go & time < 2000)
 		{
