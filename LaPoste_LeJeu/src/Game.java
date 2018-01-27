@@ -19,7 +19,6 @@ public class Game extends StateBasedGame
 	protected static AppGameContainer	app;
 	protected static Input				input;
 	protected static Random				random	= new Random();
-	protected static int				Difficultee;
 	public static Font					UIFont1;
 	public static UnicodeFont			slicker;
 	public static Music					Jazzy;

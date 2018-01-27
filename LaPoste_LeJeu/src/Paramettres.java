@@ -6,11 +6,13 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Paramettres extends BasicGameState
 {
+	protected static int difficulte;
+	protected static float volume;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
-		Game.Difficultee = 1;
+		difficulte = 1;
 
 	}
 
