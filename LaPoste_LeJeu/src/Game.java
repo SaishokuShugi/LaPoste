@@ -19,6 +19,7 @@ public class Game extends StateBasedGame
 	protected static int				Difficultee;
 	public static Font					UIFont1;
 	public static UnicodeFont			slicker;
+	
 
 	public Game(String name)
 	{
