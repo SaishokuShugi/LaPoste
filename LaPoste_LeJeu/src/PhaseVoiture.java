@@ -13,26 +13,27 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PhaseVoiture extends BasicGameState
 {
 
-	protected static float					VoitureX		= Game.app.getWidth() * .5f + 128f;
-	protected static float					VoitureY		= Game.app.getHeight() - 300f;
-	protected static Image					VoitureHero, Road;
-	protected static Rectangle				VoitureHitbox;
-	protected static SpriteSheet			Trottoirs, Toits, CentreSprite;
-	protected static ArrayList<Voiture>		Voitures		= new ArrayList<Voiture>();
-	protected static ArrayList<Lampadaire>	lampes			= new ArrayList<Lampadaire>();
-	public static int						time			= 0, timeP = 0, lastPerte =-99999;
-	public static float						speed			= 2.f;
-	public static boolean					iscarhit		= false;
-	protected static float					posroad			= 0, postoit = 0;
-	protected Animation						perte;
-	private static float					vitesseX		= 0f;
-	private int								bordsSolg[]		= new int[6];
-	private int								bordsSold[]		= new int[6];
+	protected static float						VoitureX		= Game.app.getWidth() * .5f + 128f;
+	protected static float						VoitureY		= Game.app.getHeight() - 300f;
+	protected static Image						VoitureHero, Road;
+	protected static Rectangle					VoitureHitbox;
+	protected static SpriteSheet				Trottoirs, Toits, CentreSprite;
+	protected static ArrayList<Voiture>			Voitures		= new ArrayList<Voiture>();
+	protected static ArrayList<Lampadaire>		lampes			= new ArrayList<Lampadaire>();
+	protected static ArrayList<PaperParticle>	lastPerte		= new ArrayList<PaperParticle>();
+	public static int							time			= 0, timeP = 0, timerp = -999999;;
+	public static float							speed			= 2.f;
+	public static boolean						iscarhit		= false;
+	protected static float						posroad			= 0, postoit = 0;
+	protected Animation							perte;
+	private static float						vitesseX		= 0f;
+	private int									bordsSolg[]		= new int[6];
+	private int									bordsSold[]		= new int[6];
 
-	private int								bordsToitg[]	= new int[6];
-	private int								bordsToitd[]	= new int[6];
+	private int									bordsToitg[]	= new int[6];
+	private int									bordsToitd[]	= new int[6];
 
-	private int								centreTrot[]	= new int[6];
+	private int									centreTrot[]	= new int[6];
 
 	public PhaseVoiture()
 	{
@@ -95,7 +96,7 @@ public class PhaseVoiture extends BasicGameState
 		VoitureHitbox = new Rectangle(VoitureX + VoitureHero.getWidth() / 4f, VoitureY + VoitureHero.getWidth() / 6f,
 				VoitureHero.getWidth() / 2f, VoitureHero.getHeight() * 2f / 3f);
 		initBords();
-		perte = new Animation(new SpriteSheet("res/PerteCourrier.png",128,128),50);
+		perte = new Animation(new SpriteSheet("res/PerteCourrier.png", 128, 128), 50);
 	}
 
 	@Override
@@ -147,8 +148,13 @@ public class PhaseVoiture extends BasicGameState
 				g.drawImage(trott, Game.app.getWidth() * .5f - 576f, dep);
 			}
 
-		if ((time - lastPerte) < 10 * perte.f)
-				perte.draw(VoitureX, VoitureY+110, g, time - lastPerte);
+		for (PaperParticle pp : lastPerte)
+			{
+				if ((time - pp.t0) < 10 * perte.f)
+					perte.draw(pp.x, pp.y, g, time - pp.t0);
+			}
+		lastPerte.removeIf((PaperParticle lastPerte) -> (time - lastPerte.t0 > 10 * perte.f));
+
 	}
 
 	@Override
@@ -156,7 +162,7 @@ public class PhaseVoiture extends BasicGameState
 	{
 
 		Input input = Game.input;
-		if ((input.isKeyDown(Input.KEY_ESCAPE) || input.isKeyDown(Input.KEY_P)) & timeP > 250||Game.nlettres<=0)
+		if ((input.isKeyDown(Input.KEY_ESCAPE) || input.isKeyDown(Input.KEY_P)) & timeP > 250 || Game.nlettres <= 0)
 			{
 				timeP = 0;
 				sbg.enterState(4);
@@ -164,7 +170,7 @@ public class PhaseVoiture extends BasicGameState
 		time += delta;
 		timeP += delta;
 		VoitureX += vitesseX * delta;
-		if (VoitureX < 540 | VoitureX > Game.app.getWidth() - 540 && time-lastPerte>100)
+		if ((VoitureX < 540 | VoitureX > Game.app.getWidth() - 540) && time - timerp > 100)
 			iscarhit = true;
 		VoitureX = VoitureX < 400 ? 400 : VoitureX > Game.app.getWidth() - 400 ? Game.app.getWidth() - 400 : VoitureX;
 		vitesseX *= Math.pow(.992, delta);
@@ -210,7 +216,8 @@ public class PhaseVoiture extends BasicGameState
 		if (iscarhit)
 			{
 				Game.nlettres--;
-				lastPerte=time;
+				lastPerte.add(new PaperParticle());
+				timerp = time;
 			}
 		iscarhit = false;
 
