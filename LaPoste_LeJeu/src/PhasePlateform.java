@@ -1,17 +1,24 @@
+import java.util.ArrayList;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class PhasePlateform extends BasicGameState
 {
-	protected Image bg,imgPerso;
-	protected SpriteSheet perso;
-	protected float persoX,persoY;
-	final float g = 9.81f;
+	protected Image						bg, imgPerso;
+	protected SpriteSheet				perso;
+	protected Vector2f					Pperso;
+	final float							g			= 9.81f;
+	private Rectangle					hitboxPerso;
+	private static ArrayList<Rectangle>	Platforms	= new ArrayList<Rectangle>();
+	private Vector2f					Vperso;
 
 	public PhasePlateform()
 	{
@@ -21,21 +28,38 @@ public class PhasePlateform extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
 		bg = new Image("res/back.jpg");
-		perso = new SpriteSheet("res/Postier.png", 30, 54);
-		imgPerso = perso.getSprite(0, 0);
-		
+		perso = new SpriteSheet("res/Postier.png", 42, 74);
+		imgPerso = perso.getSprite(8, 1);
+		Platforms.add(new Rectangle(0, Game.app.getHeight() - 10, Game.app.getWidth(), 20));
+		Pperso = new Vector2f(100, 20);
+		hitboxPerso = new Rectangle(Pperso.x, Pperso.y, 42, 74);
+		Vperso = new Vector2f(0, 0);
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		g.drawImage(bg, 0, 0);
+		g.drawImage(imgPerso, Pperso.x, Pperso.y);
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
-		
+		Vperso.y += .1*delta;
+		Vector2f scaledV = new Vector2f(delta*Vperso.x,delta*Vperso.y);
+		Vector2f opp = Pperso.copy();
+		Pperso = Pperso.add(scaledV);
+		hitboxPerso.setLocation(Pperso);
+		for (Rectangle rectangle : Platforms)
+			{
+				if (rectangle.intersects(hitboxPerso))
+					{
+						Pperso = opp;
+						hitboxPerso.setLocation(Pperso);
+						break;
+					}
+			}
 	}
 
 	@Override
