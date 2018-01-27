@@ -73,7 +73,29 @@ public class PhasePlateform extends BasicGameState
 						Platforms.add(new Rectangle(i * Game.app.getWidth() * .25f,
 								(j + 1) * Game.app.getHeight() * .25f, Game.app.getWidth() * .25f, 1));
 				}
-		//Platforms.add(new Rectangle(400+a,225+b,))
+		Platforms.add(new Rectangle(400+74,225+10,100,4));
+		Platforms.add(new Rectangle(400+75,225+113,99,3));
+		Platforms.add(new Rectangle(400+218,225+60,105,4));
+		Platforms.add(new Rectangle(400+221,225+150,101,4));
+		Platforms.add(new Rectangle(0+24,450+3,16,2));
+		Platforms.add(new Rectangle(0+80,450+35,41,3));
+		Platforms.add(new Rectangle(0+181,450+79,23,2));
+		Platforms.add(new Rectangle(0+147,450+150,25,2));
+		Platforms.add(new Rectangle(0+207,450+142,17,3));
+		Platforms.add(new Rectangle(0+263,450+114,17,3));
+		Platforms.add(new Rectangle(0+317,450+78,17,2));
+		Platforms.add(new Rectangle(0+372,450+51,18,2));
+		Platforms.add(new Rectangle(0+311,450+18,18,3));
+		Platforms.add(new Rectangle(0+256,450+3,16,4));
+		Platforms.add(new Rectangle(800+6,675+5,18,14));
+		Platforms.add(new Rectangle(800+57,675+13,21,15));
+		Platforms.add(new Rectangle(800+109,675+18,26,19));
+		Platforms.add(new Rectangle(800+183,675+58,40,3));
+		Platforms.add(new Rectangle(800+186,675+142,34,3));
+		Platforms.add(new Rectangle(800+273,675+19,26,20));
+		Platforms.add(new Rectangle(800+341,675+18,26,16));
+		Platforms.add(new Rectangle(800+384,675+5,14,15));
+		
 	}
 
 	@Override
