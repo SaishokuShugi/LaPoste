@@ -62,7 +62,7 @@ public class Game extends StateBasedGame
 		random = new Random();
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
-		addState(new Paramettres());
+		addState(new Parametres());
 		addState(new Pause());
 
 		// gc.setTargetFrameRate(120);

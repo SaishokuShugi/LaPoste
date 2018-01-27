@@ -6,7 +6,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Paramettres extends BasicGameState
+public class Parametres extends BasicGameState
 {
 	protected static int	difficulte, pVolume = 50;
 	private static int		choix, time = 0;
