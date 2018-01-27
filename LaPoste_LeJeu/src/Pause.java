@@ -20,13 +20,21 @@ public class Pause extends BasicGameState
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
+
 		MenuStart.startBackground.draw(0, 0);
 		MenuStart.R4.draw(1000, 550);
+		g.setColor(Color.yellow);
+		for (int i = 1; i < 3; i++)
+		{
+			g.fillRect(90, 90 + ((float) i * 100), 200, 50);
+		}
+		g.fillRect(90, 90, 260, 50);
 		Game.slicker.drawString(100, 100, "Volume :");
 		Game.slicker.drawString(100, 200, "Resume");
 		Game.slicker.drawString(100, 300, "Main Menu");
 		Game.slicker.drawString(250, 100, Integer.toString(pVolume));
-		g.setColor(Color.darkGray);
+		g.setLineWidth(5);
+		g.setColor(Color.blue);
 		if (choix == 0)
 		{
 			g.drawRect(240, 90 + ((float) choix * 100), 110, 50);

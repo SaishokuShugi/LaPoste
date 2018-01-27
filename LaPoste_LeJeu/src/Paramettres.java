@@ -23,6 +23,10 @@ public class Paramettres extends BasicGameState
 	{
 		MenuStart.startBackground.draw(0, 0);
 		MenuStart.R4.draw(1000, 550);
+		g.setColor(Color.yellow);
+		g.fillRect(90, 90, 260, 50);
+		g.fillRect(90, 190, 260, 50);
+		g.fillRect(90, 290, 200, 50);
 		Game.slicker.drawString(100, 100, "Difficulte :");
 		Game.slicker.drawString(100, 200, "Volume :");
 		Game.slicker.drawString(100, 300, "Main Menu");
@@ -44,9 +48,10 @@ public class Paramettres extends BasicGameState
 				break;
 			}
 		}
-
+		
 		Game.slicker.drawString(250, 200, Integer.toString(pVolume));
-		g.setColor(Color.darkGray);
+		g.setLineWidth(5);
+		g.setColor(Color.blue);
 		if (choix == 0 | choix == 1)
 		{
 			g.drawRect(240, 90 + ((float) choix * 100), 110, 50);
