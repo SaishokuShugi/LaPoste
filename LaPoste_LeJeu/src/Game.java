@@ -50,10 +50,11 @@ public class Game extends StateBasedGame
 		slicker.addAsciiGlyphs();
 		slicker.loadGlyphs();
 		input = gc.getInput();
+		Jazzy = new Music("res/Blusy.ogg");
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new Paramettres());
-		Jazzy = new Music("res/Blusy.ogg");
+
 
 		// gc.setTargetFrameRate(120);
 
