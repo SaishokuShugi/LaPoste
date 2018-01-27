@@ -25,7 +25,7 @@ public class Game extends StateBasedGame
 		input = gc.getInput();
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
-		
+		addState(new Paramettres());
 
 		// gc.setTargetFrameRate(120);
 
