@@ -10,7 +10,8 @@ public abstract class Voiture
 	protected static SpriteSheet	voituresImg;
 	protected static float			v0	= 3f;
 	protected boolean				voie;
-	protected Rectangle hitbox;
+	protected Rectangle 			hitbox;
+	protected boolean 				destroyed= false;
 
 	public abstract void render(Graphics g);
 

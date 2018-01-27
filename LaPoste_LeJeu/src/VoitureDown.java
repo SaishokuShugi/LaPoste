@@ -31,6 +31,8 @@ public class VoitureDown extends Voiture
 		speed = (PhaseVoiture.speed + v0) * .1f + (voie ? .05f : 0);
 		y += delta * speed;
 		hitbox.setLocation(x, y);
+		if (PhaseVoiture.VoitureHitbox.intersects(hitbox))
+			destroyed=true;
 		return y > Game.app.getHeight();
 		
 	}

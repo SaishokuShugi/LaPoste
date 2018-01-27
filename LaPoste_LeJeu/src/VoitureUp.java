@@ -32,7 +32,9 @@ public class VoitureUp extends Voiture
 		speed = (PhaseVoiture.speed - v0) * .1f + (voie ? 0 : .05f);
 		y += delta * speed;
 		hitbox.setLocation(x, y);
-		return y > Game.app.getHeight() || y < -129f;
+		if (PhaseVoiture.VoitureHitbox.intersects(hitbox))
+			destroyed=true;
+		return y > Game.app.getHeight() || y < -129f;  
 	}
 
 }
