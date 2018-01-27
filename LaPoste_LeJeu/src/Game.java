@@ -10,7 +10,7 @@ public class Game extends StateBasedGame
 {
 	protected static AppGameContainer	app;
 	protected static Input				input;
-	protected static Random				random;
+	protected static Random				random = new Random();
 
 	public Game(String name)
 	{
@@ -22,9 +22,10 @@ public class Game extends StateBasedGame
 	public void initStatesList(GameContainer gc) throws SlickException
 	{
 		// TODO Auto-generated method stub
-
+		input = gc.getInput();
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
+		
 
 		// gc.setTargetFrameRate(120);
 
