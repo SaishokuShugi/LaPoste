@@ -155,8 +155,16 @@ public class PhaseVoiture extends BasicGameState
 				perte.draw(pp.x, pp.y, g, time - pp.t0);
 		}
 		lastPerte.removeIf((PaperParticle lastPerte) -> (time - lastPerte.t0 > 10 * perte.f));
-		Progression.draw(300, 0);
-		minicar.draw(300 + posroad / 100, 0);
+		Progression.draw(400, 0);
+		minicar.draw(400 + posroad / 100, 0);
+		float shurikenX = 10, shurikenY = 10;
+		for (int i = 0; i < Game.nlettres; i++)
+		{
+			shurikenX += 10;
+			shurikenX %= 5;
+			shurikenY += i / 5;
+			Game.shuriken.draw(shurikenX, shurikenY);
+		}
 
 	}
 
@@ -222,16 +230,16 @@ public class PhaseVoiture extends BasicGameState
 			timerp = time;
 		}
 		iscarhit = false;
-		
+
 		if (posroad > 77000)
 		{
 			speed -= 0.015 * delta;
-			VoitureX += 0.01*delta;
-			if (VoitureX >=1045)
+			VoitureX += 0.01 * delta;
+			if (VoitureX >= 1045)
 			{
 				VoitureX = 1045;
 				speed = 0;
-				sbg.enterState(5,new FadeOutTransition(), new FadeInTransition());
+				sbg.enterState(5, new FadeOutTransition(), new FadeInTransition());
 			}
 		}
 	}

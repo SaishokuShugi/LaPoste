@@ -6,6 +6,7 @@ import java.util.Random;
 //import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
@@ -27,6 +28,7 @@ public class Game extends StateBasedGame
 	public static Animation				boom;
 	public static int					state;
 	public static int					nlettres	= 48;
+	public static Image					shuriken;
 
 	public Game(String name)
 	{
@@ -39,16 +41,15 @@ public class Game extends StateBasedGame
 	public void initStatesList(GameContainer gc) throws SlickException
 	{
 		try
-			{
-				UIFont1 = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT,
-						org.newdawn.slick.util.ResourceLoader.getResourceAsStream("res/SLICKER.TTF"));
-			} catch (FontFormatException e)
-			{
-				e.printStackTrace();
-			} catch (IOException e)
-			{
-				e.printStackTrace();
-			}
+		{
+			UIFont1 = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, org.newdawn.slick.util.ResourceLoader.getResourceAsStream("res/SLICKER.TTF"));
+		} catch (FontFormatException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 		UIFont1 = UIFont1.deriveFont(java.awt.Font.PLAIN, 25.f);
 		slicker = new UnicodeFont(UIFont1);
 		slicker.addAsciiGlyphs();
@@ -66,13 +67,14 @@ public class Game extends StateBasedGame
 		pouet = new Sound("res/pouetpouet-SF.ogg");
 		boom = new Animation(new SpriteSheet("res/explosion.png", 128, 128), 100);
 		random = new Random();
+		shuriken = new Image("res/envelloppeShutiken.png");
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new PhasePlateform());
 		addState(new Parametres());
 		addState(new Pause());
 		Voiture.voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
-		nlettres /= (Parametres.difficulte+1);
+		nlettres /= (Parametres.difficulte + 1);
 
 		// gc.setTargetFrameRate(120);
 
@@ -83,17 +85,17 @@ public class Game extends StateBasedGame
 		// TODO Auto-generated method stub
 
 		try
-			{
-				app = new AppGameContainer(new Game("jeu"));
-				app.setDisplayMode(1600, 900, false);
-				app.setShowFPS(true);
-				app.start();
-				app.setVSync(false);
+		{
+			app = new AppGameContainer(new Game("jeu"));
+			app.setDisplayMode(1600, 900, false);
+			app.setShowFPS(true);
+			app.start();
+			app.setVSync(false);
 
-			} catch (SlickException e)
-			{
-				e.printStackTrace();
-			}
+		} catch (SlickException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }
