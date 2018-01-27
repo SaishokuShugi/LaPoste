@@ -7,7 +7,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class PhasePlateform extends BasicGameState
-{Perso
+{
 	protected Image bg,imgPerso;
 	protected SpriteSheet perso;
 	protected float persoX,persoY;
@@ -29,7 +29,7 @@ public class PhasePlateform extends BasicGameState
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		
+		g.drawImage(bg, 0, 0);
 	}
 
 	@Override
