@@ -68,6 +68,7 @@ public class PhaseVoiture extends BasicGameState
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
+		gc.setMouseGrabbed(true);
 		VoitureHero = new Image("res/Car.png");
 		Road = new Image("res/Route.png");
 		Trottoirs = new SpriteSheet("res/SpriteRoute.png", 256, 256);
@@ -79,6 +80,7 @@ public class PhaseVoiture extends BasicGameState
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
+
 		for (int i = 0; i < (int) (Game.app.getHeight() / 128f) + 1; i++)
 			{
 				g.drawImage(Road, Game.app.getWidth() * .5f + 64f, (float) ((i - 1) * 128. + posroad % 128.));
