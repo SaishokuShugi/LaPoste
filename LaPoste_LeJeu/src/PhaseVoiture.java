@@ -151,7 +151,7 @@ public class PhaseVoiture extends BasicGameState
 			}
 		if ((int) (posroad / 256f) != (int) ((posroad += .1 * speed * delta) / 256f))
 			updateTrot();
-		 if ((int) (postoit / 256f) != (int) ((postoit += .105 * speed * delta) / 256f))
+		 if ((int) (postoit / 256f) != (int) ((postoit += .103 * speed * delta) / 256f))
 			updateToit();
 	}
 
