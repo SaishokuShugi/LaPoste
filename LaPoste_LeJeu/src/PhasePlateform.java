@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
@@ -19,6 +20,7 @@ public class PhasePlateform extends BasicGameState
 	private Rectangle					hitboxPerso;
 	private static ArrayList<Rectangle>	Platforms	= new ArrayList<Rectangle>();
 	private Vector2f					Vperso;
+	private boolean						facingLeft	= false,onGround = false;
 
 	public PhasePlateform()
 	{
@@ -46,20 +48,41 @@ public class PhasePlateform extends BasicGameState
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
-		Vperso.y += .1*delta;
-		Vector2f scaledV = new Vector2f(delta*Vperso.x,delta*Vperso.y);
+		Vperso.scale(.999f);
+		Vperso.y += .001 * delta;
+		if (Game.input.isKeyDown(Input.KEY_LEFT))
+			{
+				Vperso.x = -.3f;
+				facingLeft = true;
+			}
+		if (Game.input.isKeyDown(Input.KEY_RIGHT))
+			{
+				Vperso.x = .3f;
+				facingLeft = false;
+			}
+		if((Game.input.isKeyDown(Input.KEY_SPACE)||Game.input.isKeyDown(Input.KEY_UP))& onGround)
+			{
+			Vperso.y = -.5f;
+			onGround=false;
+			}
+		Vector2f scaledV = new Vector2f(delta * Vperso.x, delta * Vperso.y);
 		Vector2f opp = Pperso.copy();
-		Pperso = Pperso.add(scaledV);
+		Pperso.add(scaledV);
 		hitboxPerso.setLocation(Pperso);
 		for (Rectangle rectangle : Platforms)
 			{
 				if (rectangle.intersects(hitboxPerso))
 					{
+						onGround = true;
 						Pperso = opp;
 						hitboxPerso.setLocation(Pperso);
+						Vperso.y = -.01f;
+						Vperso.x *= 0;
 						break;
 					}
 			}
+		if(Vperso.y>0)
+			onGround=false;
 	}
 
 	@Override
