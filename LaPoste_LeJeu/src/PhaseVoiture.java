@@ -15,7 +15,7 @@ public class PhaseVoiture extends BasicGameState
 	protected static float				VoitureX		= Game.app.getWidth() * .5f + 128f;
 	protected static float				VoitureY		= Game.app.getHeight() - 300f;
 	protected static Image				VoitureHero, Road;
-	protected static SpriteSheet		Trottoirs, Toits;
+	protected static SpriteSheet		Trottoirs, Toits, CentreSprite;
 	protected static ArrayList<Voiture>	Voitures		= new ArrayList<Voiture>();
 	protected int						time			= 0, timeP = 0;
 	public static float					speed			= 2.f;
@@ -27,6 +27,8 @@ public class PhaseVoiture extends BasicGameState
 	private int							bordsToitg[]	= new int[6];
 	private int							bordsToitd[]	= new int[6];
 
+	private int							centreTrot[]	= new int[6];
+
 	public PhaseVoiture()
 	{
 	}
@@ -34,33 +36,44 @@ public class PhaseVoiture extends BasicGameState
 	public void initBords()
 	{
 		for (int i = 0; i < 5; i++)
-		{
-			bordsSold[i] = Game.random.nextInt(6);
-			bordsSolg[i] = Game.random.nextInt(6);
+			{
+				bordsSold[i] = Game.random.nextInt(6);
+				bordsSolg[i] = Game.random.nextInt(6);
 
-			bordsToitd[i] = Game.random.nextInt(6);
-			bordsToitg[i] = Game.random.nextInt(6);
-		}
+				bordsToitd[i] = Game.random.nextInt(6);
+				bordsToitg[i] = Game.random.nextInt(6);
+
+				centreTrot[i] = Game.random.nextInt(4);
+			}
 	}
 
 	public void updateTrot()
 	{
 		for (int j = 4; j >= 0; j--)
-		{
-			bordsSold[j + 1] = bordsSold[j];
-			bordsSolg[j + 1] = bordsSolg[j];
-		}
+			{
+				bordsSold[j + 1] = bordsSold[j];
+				bordsSolg[j + 1] = bordsSolg[j];
+			}
 		bordsSold[0] = Game.random.nextInt(6);
 		bordsSolg[0] = Game.random.nextInt(6);
+	}
+
+	public void updateCentre()
+	{
+		for (int j = 4; j >= 0; j--)
+			{
+				centreTrot[j + 1] = centreTrot[j];
+			}
+		centreTrot[0] = Game.random.nextInt(4);
 	}
 
 	public void updateToit()
 	{
 		for (int j = 4; j >= 0; j--)
-		{
-			bordsToitd[j + 1] = bordsToitd[j];
-			bordsToitg[j + 1] = bordsToitg[j];
-		}
+			{
+				bordsToitd[j + 1] = bordsToitd[j];
+				bordsToitg[j + 1] = bordsToitg[j];
+			}
 		bordsToitd[0] = Game.random.nextInt(6);
 		bordsToitg[0] = Game.random.nextInt(6);
 	}
@@ -73,6 +86,7 @@ public class PhaseVoiture extends BasicGameState
 		Road = new Image("res/Route.png");
 		Trottoirs = new SpriteSheet("res/SpriteRoute.png", 256, 256);
 		Toits = new SpriteSheet("res/SpriteToit.png", 256, 256);
+		CentreSprite = new SpriteSheet("res/SpriteCenter.png", 128, 256);
 
 		initBords();
 	}
@@ -82,41 +96,47 @@ public class PhaseVoiture extends BasicGameState
 	{
 
 		for (int i = 0; i < (int) (Game.app.getHeight() / 128f) + 1; i++)
-		{
-			g.drawImage(Road, Game.app.getWidth() * .5f + 64f, (float) ((i - 1) * 128. + posroad % 128.));
-		}
+			{
+				g.drawImage(Road, Game.app.getWidth() * .5f + 64f, (float) ((i - 1) * 128. + posroad % 128.));
+			}
 		Road.rotate(180);
 		for (int i = 0; i < (int) (Game.app.getHeight() / 128f) + 1; i++)
-		{
-			g.drawImage(Road, Game.app.getWidth() * .5f - 320f, (float) ((i - 1) * 128. + posroad % 128.));
-		}
+			{
+				g.drawImage(Road, Game.app.getWidth() * .5f - 320f, (float) ((i - 1) * 128. + posroad % 128.));
+			}
 		Road.rotate(180);
 
 		for (int i = 0; i < (int) (Game.app.getHeight() / 256f) + 2; i++)
-		{
-			float dep = (float) ((i - 1) * 256. + posroad % 256.);
-			Image trott = Trottoirs.getSprite(bordsSold[i] % 2, bordsSold[i] / 2);
-			g.drawImage(trott, Game.app.getWidth() * .5f + 320f, dep);
-			trott = Trottoirs.getSprite(bordsSolg[i] % 2, bordsSolg[i] / 2);
-			trott.rotate(180);
-			g.drawImage(trott, Game.app.getWidth() * .5f - 576f, dep);
-		}
+			{
+				float dep = (float) ((i - 1) * 256. + posroad % 256.);
+				Image trott = CentreSprite.getSprite(centreTrot[i] % 2, centreTrot[i] / 2);
+				g.drawImage(trott, Game.app.getWidth() * .5f - 64f, dep);
+			}
+		for (int i = 0; i < (int) (Game.app.getHeight() / 256f) + 2; i++)
+			{
+				float dep = (float) ((i - 1) * 256. + posroad % 256.);
+				Image trott = Trottoirs.getSprite(bordsSold[i] % 2, bordsSold[i] / 2);
+				g.drawImage(trott, Game.app.getWidth() * .5f + 320f, dep);
+				trott = Trottoirs.getSprite(bordsSolg[i] % 2, bordsSolg[i] / 2);
+				trott.rotate(180);
+				g.drawImage(trott, Game.app.getWidth() * .5f - 576f, dep);
+			}
 
 		g.drawImage(VoitureHero, VoitureX, VoitureY);
 
 		for (Voiture voiture : Voitures)
-		{
-			voiture.render(g);
-		}
+			{
+				voiture.render(g);
+			}
 		for (int i = 0; i < (int) (Game.app.getHeight() / 256f) + 2; i++)
-		{
-			float dep = (float) ((i - 1) * 256. + postoit % 256.);
-			Image trott = Toits.getSprite(bordsToitd[i] % 2, bordsToitd[i] / 2);
-			g.drawImage(trott, Game.app.getWidth() * .5f + 320f, dep);
-			trott = Toits.getSprite(bordsToitg[i] % 2, bordsToitg[i] / 2);
-			trott.rotate(180);
-			g.drawImage(trott, Game.app.getWidth() * .5f - 576f, dep);
-		}
+			{
+				float dep = (float) ((i - 1) * 256. + postoit % 256.);
+				Image trott = Toits.getSprite(bordsToitd[i] % 2, bordsToitd[i] / 2);
+				g.drawImage(trott, Game.app.getWidth() * .5f + 320f, dep);
+				trott = Toits.getSprite(bordsToitg[i] % 2, bordsToitg[i] / 2);
+				trott.rotate(180);
+				g.drawImage(trott, Game.app.getWidth() * .5f - 576f, dep);
+			}
 	}
 
 	@Override
@@ -124,10 +144,10 @@ public class PhaseVoiture extends BasicGameState
 	{
 		Input input = Game.input;
 		if ((input.isKeyDown(Input.KEY_ESCAPE) || input.isKeyDown(Input.KEY_P)) & timeP > 250)
-		{
-			timeP = 0;
-			sbg.enterState(4);
-		}
+			{
+				timeP = 0;
+				sbg.enterState(4);
+			}
 		time += delta;
 		timeP += delta;
 		VoitureX += vitesseX * delta;
@@ -146,17 +166,20 @@ public class PhaseVoiture extends BasicGameState
 
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique
 		if ((int) ((speed - Voiture.v0) * time / 6000) > (int) ((speed - Voiture.v0) * (time - delta) / 6000))
-		{
-			if (Game.random.nextInt(3) <= 1)
-				Voitures.add(new VoitureUp());
-		}
+			{
+				if (Game.random.nextInt(3) <= 1)
+					Voitures.add(new VoitureUp());
+			}
 		if ((int) ((speed + Voiture.v0) * time / 6000) > (int) ((speed + Voiture.v0) * (time - delta) / 6000))
-		{
-			if (Game.random.nextInt(3) <= 1)
-				Voitures.add(new VoitureDown());
-		}
+			{
+				if (Game.random.nextInt(3) <= 1)
+					Voitures.add(new VoitureDown());
+			}
 		if ((int) (posroad / 256f) != (int) ((posroad += .1 * speed * delta) / 256f))
-			updateTrot();
+			{
+				updateTrot();
+				updateCentre();
+			}
 		if ((int) (postoit / 256f) != (int) ((postoit += .103 * speed * delta) / 256f))
 			updateToit();
 	}
