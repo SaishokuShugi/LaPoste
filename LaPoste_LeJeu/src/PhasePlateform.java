@@ -21,8 +21,10 @@ public class PhasePlateform extends BasicGameState
 	private static ArrayList<Rectangle>	Platforms	= new ArrayList<Rectangle>();
 	private Vector2f					Vperso;
 	private boolean						facingLeft	= false, onGround = false;
-	private boolean[]					ispassage		= new boolean[16];
+	private boolean[]					ispassage	= new boolean[16];
 	private Image[]						bgtex		= new Image[16];
+
+	private SpriteSheet					bgvoid, bgmaison, bgscales;
 
 	public PhasePlateform()
 	{
@@ -36,6 +38,26 @@ public class PhasePlateform extends BasicGameState
 					int n = Game.random.nextInt(4);
 					ispassage[j + 4 * i] = j == n;
 				}
+		for (int i = 0; i < 4; i++)
+			for (int j = 0; j < 4; j++)
+				{
+					if (ispassage[j + 4 * i])
+						{
+							bgtex[j + 4 * i] = bgscales.getSprite(Game.random.nextInt(2), Game.random.nextInt(2));
+						} else
+						{
+							if (i < 3)
+								{
+									if (ispassage[j + 4 * (i + 1)])
+										{
+											bgtex[j + 4 * i] = bgvoid.getSprite(Game.random.nextInt(2),
+													Game.random.nextInt(2));
+											return;
+										}
+								}
+							bgtex[j + 4 * i] = bgmaison.getSprite(Game.random.nextInt(2), Game.random.nextInt(2));
+						}
+				}
 
 	}
 
@@ -43,6 +65,10 @@ public class PhasePlateform extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
 		bg = new Image("res/back.jpg");
+		bgvoid = new SpriteSheet("res/Rien.png", 400, 225);
+		bgmaison = new SpriteSheet("res/Maison.png", 400, 225);
+		bgscales = new SpriteSheet("res/Plateforme.png", 400, 255);
+
 		perso = new SpriteSheet("res/Postier.png", 42, 74);
 		imgPerso = perso.getSprite(8, 1);
 		Platforms.add(new Rectangle(0, Game.app.getHeight() - 10, Game.app.getWidth(), 20));
