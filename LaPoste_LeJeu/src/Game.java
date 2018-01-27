@@ -18,7 +18,7 @@ public class Game extends StateBasedGame
 {
 	protected static AppGameContainer	app;
 	protected static Input				input;
-	protected static Random				random	= new Random();
+	protected static Random				random;
 	public static Font					UIFont1;
 	public static UnicodeFont			slicker;
 	public static Music					Jazzy;
@@ -54,6 +54,7 @@ public class Game extends StateBasedGame
 		input = gc.getInput();
 		Jazzy = new Music("res/Blusy.ogg");
 		boom = new Animation(new SpriteSheet("res/explosion.png", 128, 128), 100);
+		random	= new Random();
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new Paramettres());
