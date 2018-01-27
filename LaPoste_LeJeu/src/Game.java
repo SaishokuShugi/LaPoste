@@ -3,11 +3,13 @@ import java.awt.FontFormatException;
 import java.io.IOException;
 import java.util.Random;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.StateBasedGame;
@@ -21,6 +23,7 @@ public class Game extends StateBasedGame
 	public static Font					UIFont1;
 	public static UnicodeFont			slicker;
 	public static Music 				Jazzy;
+	public static Animation				boom;
 	
 
 	public Game(String name)
@@ -51,6 +54,7 @@ public class Game extends StateBasedGame
 		slicker.loadGlyphs();
 		input = gc.getInput();
 		Jazzy = new Music("res/Blusy.ogg");
+		boom = new Animation(new SpriteSheet("res/explosion.png",128,128), 10);
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new Paramettres());
