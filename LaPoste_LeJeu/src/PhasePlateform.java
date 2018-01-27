@@ -70,7 +70,8 @@ public class PhasePlateform extends BasicGameState
 			for (int j = 0; j < 4; j++)
 				{
 					if (!isvoid[j + i * 4])
-						Platforms.add(new Rectangle(i * Game.app.getWidth() * .25f,								(j + 1) * Game.app.getHeight() * .25f, Game.app.getWidth() * .25f, 1));
+						Platforms.add(new Rectangle(i * Game.app.getWidth() * .25f,
+								(j + 1) * Game.app.getHeight() * .25f, Game.app.getWidth() * .25f, 1));
 				}
 
 	}
