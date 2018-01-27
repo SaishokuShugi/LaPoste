@@ -8,7 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Pause extends BasicGameState
 {
-	int timer = 0, choix = 0, pVolume = Paramettres.pVolume, time = 0;
+	int timer = 0, choix = 0, pVolume = Parametres.pVolume, time = 0;
 	private boolean go = false;
 	private float vx = 1000;
 
