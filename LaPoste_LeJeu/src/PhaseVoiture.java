@@ -131,7 +131,6 @@ public class PhaseVoiture extends BasicGameState
 		for (Voiture voiture : Voitures)
 			{
 				voiture.render(g);
-				if (voiture.destroyed)
 					
 			}
 		for (Lampadaire l : lampes)
