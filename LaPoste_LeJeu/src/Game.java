@@ -62,6 +62,7 @@ public class Game extends StateBasedGame
 		random = new Random();
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
+		addState(new PhasePlateform());
 		addState(new Parametres());
 		addState(new Pause());
 		Voiture.voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
