@@ -164,7 +164,7 @@ public class PhaseVoiture extends BasicGameState
 		time += delta;
 		timeP += delta;
 		VoitureX += vitesseX * delta;
-		if (VoitureX < 520 | VoitureX > Game.app.getWidth() - 520 && time-lastPerte>100)
+		if (VoitureX < 540 | VoitureX > Game.app.getWidth() - 540 && time-lastPerte>100)
 			iscarhit = true;
 		VoitureX = VoitureX < 400 ? 400 : VoitureX > Game.app.getWidth() - 400 ? Game.app.getWidth() - 400 : VoitureX;
 		vitesseX *= Math.pow(.992, delta);
