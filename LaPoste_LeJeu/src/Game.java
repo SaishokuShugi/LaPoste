@@ -64,6 +64,7 @@ public class Game extends StateBasedGame
 		addState(new PhaseVoiture());
 		addState(new Parametres());
 		addState(new Pause());
+		Voiture.voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
 
 		// gc.setTargetFrameRate(120);
 

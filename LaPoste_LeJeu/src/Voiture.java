@@ -7,7 +7,8 @@ public abstract class Voiture
 {
 	protected Image					image;
 	protected float					x, y, speed;
-	protected static SpriteSheet	voituresImg;
+	public static SpriteSheet	voituresImg;
+;
 	protected static float			v0			= 3f;
 	protected boolean				voie;
 	protected Rectangle				hitbox;
