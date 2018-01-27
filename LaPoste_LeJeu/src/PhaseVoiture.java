@@ -74,7 +74,7 @@ public class PhaseVoiture extends BasicGameState
 			speed += delta * .004;
 		if (input.isKeyDown(Input.KEY_DOWN))
 			speed -= delta * .01;
-		speed = speed < 1.5 ? 1.5f : speed;
+		speed = speed < Voiture.v0-.5f ? Voiture.v0-.5f : speed;
 		posroad+=.1*speed*delta;
 
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique

@@ -17,6 +17,7 @@ public class MenuStart extends BasicGameState
 	public static Image			startBackground;
 
 	private static int			choix	= 0;
+	private int time = 0;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -41,7 +42,7 @@ public class MenuStart extends BasicGameState
 		{
 			for (int j = 0; j < 100; j++)
 			{
-				Game.boom.draw(60*i, 60*j);
+				Game.boom.draw(60*i, 60*j,g,time);
 			}
 		}
 	}
@@ -63,6 +64,7 @@ public class MenuStart extends BasicGameState
 		{
 			sbg.enterState(choix);
 		}
+		time+=g;
 
 	}
 
