@@ -23,7 +23,7 @@ public class Game extends StateBasedGame
 	public static UnicodeFont			slicker;
 	public static Music					Jazzy;
 	public static Animation				boom;
-	public static int 					state;
+	public static int					state;
 
 	public Game(String name)
 	{
@@ -36,15 +36,16 @@ public class Game extends StateBasedGame
 	public void initStatesList(GameContainer gc) throws SlickException
 	{
 		try
-		{
-			UIFont1 = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT, org.newdawn.slick.util.ResourceLoader.getResourceAsStream("res/SLICKER.TTF"));
-		} catch (FontFormatException e)
-		{
-			e.printStackTrace();
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+			{
+				UIFont1 = java.awt.Font.createFont(java.awt.Font.TRUETYPE_FONT,
+						org.newdawn.slick.util.ResourceLoader.getResourceAsStream("res/SLICKER.TTF"));
+			} catch (FontFormatException e)
+			{
+				e.printStackTrace();
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		UIFont1 = UIFont1.deriveFont(java.awt.Font.PLAIN, 25.f);
 		slicker = new UnicodeFont(UIFont1);
 		slicker.addAsciiGlyphs();
@@ -54,7 +55,7 @@ public class Game extends StateBasedGame
 		input = gc.getInput();
 		Jazzy = new Music("res/Blusy.ogg");
 		boom = new Animation(new SpriteSheet("res/explosion.png", 128, 128), 100);
-		random	= new Random();
+		random = new Random();
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new Paramettres());
@@ -69,17 +70,17 @@ public class Game extends StateBasedGame
 		// TODO Auto-generated method stub
 
 		try
-		{
-			app = new AppGameContainer(new Game("jeu"));
-			app.setDisplayMode(1600, 900, false);
-			app.setShowFPS(true);
-			app.start();
-			app.setVSync(false);
+			{
+				app = new AppGameContainer(new Game("jeu"));
+				app.setDisplayMode(1600, 900, false);
+				app.setShowFPS(true);
+				app.start();
+				app.setVSync(false);
 
-		} catch (SlickException e)
-		{
-			e.printStackTrace();
-		}
+			} catch (SlickException e)
+			{
+				e.printStackTrace();
+			}
 	}
 
 }
