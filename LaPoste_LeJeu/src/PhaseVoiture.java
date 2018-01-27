@@ -170,9 +170,9 @@ public class PhaseVoiture extends BasicGameState
 		time += delta;
 		timeP += delta;
 		VoitureX += vitesseX * delta;
-		if ((VoitureX < 540 | VoitureX > Game.app.getWidth() - 540) && time - timerp > 100)
+		if ((VoitureX+64 < 540 | VoitureX+64 > Game.app.getWidth() - 540) && time - timerp > 100)
 			iscarhit = true;
-		VoitureX = VoitureX < 400 ? 400 : VoitureX > Game.app.getWidth() - 400 ? Game.app.getWidth() - 400 : VoitureX;
+		VoitureX = VoitureX+64 < 400 ? 400-64 : VoitureX +64> Game.app.getWidth() - 400 ? Game.app.getWidth() - 400-64 : VoitureX;
 		vitesseX *= Math.pow(.992, delta);
 		if (input.isKeyDown(Input.KEY_LEFT))
 			vitesseX -= delta * .001 * speed;
