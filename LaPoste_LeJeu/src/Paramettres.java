@@ -9,7 +9,9 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Paramettres extends BasicGameState
 {
 	protected static int	difficulte, pVolume = 50;
-	private static int		choix;
+	private static int		choix, time = 0;
+	private boolean			go	= false;
+	private float			vx	= 1000;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
@@ -22,7 +24,7 @@ public class Paramettres extends BasicGameState
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		MenuStart.startBackground.draw(0, 0);
-		MenuStart.R4.draw(1000, 550);
+		MenuStart.R4.draw(vx, 550);
 		g.setColor(Color.yellow);
 		g.fillRect(90, 90, 260, 50);
 		g.fillRect(90, 190, 260, 50);
@@ -48,7 +50,7 @@ public class Paramettres extends BasicGameState
 				break;
 			}
 		}
-		
+
 		Game.slicker.drawString(250, 200, Integer.toString(pVolume));
 		g.setLineWidth(5);
 		g.setColor(Color.blue);
@@ -62,63 +64,68 @@ public class Paramettres extends BasicGameState
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame sbg, int g) throws SlickException
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
-		boolean down = Game.input.isKeyPressed(Input.KEY_DOWN), up = Game.input.isKeyPressed(Input.KEY_UP), left = Game.input.isKeyPressed(Input.KEY_LEFT), right = Game.input.isKeyPressed(Input.KEY_RIGHT), enter = Game.input.isKeyPressed(Input.KEY_ENTER);
+		boolean down = Game.input.isKeyPressed(Input.KEY_DOWN), up = Game.input.isKeyPressed(Input.KEY_UP),
+				left = Game.input.isKeyPressed(Input.KEY_LEFT), right = Game.input.isKeyPressed(Input.KEY_RIGHT),
+				enter = Game.input.isKeyPressed(Input.KEY_ENTER);
 
 		if (down)
 		{
 			choix++;
-		}
-		else if (up & choix > 0)
+		} else if (up & choix > 0)
 		{
 			choix--;
-		}
-		else if (up & choix == 0)
+		} else if (up & choix == 0)
 		{
 			choix = 2;
 		}
 		choix %= 3;
-		
+
 		if (choix == 0)
 		{
 			if (right)
 			{
 				difficulte++;
-			}
-			else if (left & difficulte > 0)
+			} else if (left & difficulte > 0)
 			{
 				difficulte--;
-			}
-			else if (left & difficulte == 0)
+			} else if (left & difficulte == 0)
 			{
 				difficulte = 2;
 			}
 			difficulte %= 3;
-		}
-		else if (choix ==1)
+		} else if (choix == 1)
 		{
 			if (right)
 			{
-				pVolume+=10;
-			}
-			else if (left & pVolume > 0)
+				pVolume += 10;
+			} else if (left & pVolume > 0)
 			{
-				pVolume-=10;
-			}
-			else if (left & pVolume == 0)
+				pVolume -= 10;
+			} else if (left & pVolume == 0)
 			{
 				pVolume = 90;
 			}
 			pVolume %= 100;
-			gc.setMusicVolume(((float)(pVolume))/100);
-		}else if(choix == 2)
+			gc.setMusicVolume(((float) (pVolume)) / 100);
+		}
+		if (enter & choix == 2)
 		{
-			if (enter)
-			{
-				Game.state = 100;
-				sbg.enterState(100);
-			}
+			go = true;
+
+		}
+		if (go & time < 2000)
+		{
+			time += delta;
+			vx += delta;
+		} else if (go)
+		{
+			time = 0;
+			go = false;
+			vx = 1000;
+			Game.state = 100;
+			sbg.enterState(100);
 		}
 	}
 
