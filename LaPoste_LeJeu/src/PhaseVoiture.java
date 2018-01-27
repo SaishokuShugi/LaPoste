@@ -9,6 +9,8 @@ import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class PhaseVoiture extends BasicGameState
 {
@@ -29,10 +31,8 @@ public class PhaseVoiture extends BasicGameState
 	private static float						vitesseX		= 0f;
 	private int									bordsSolg[]		= new int[6];
 	private int									bordsSold[]		= new int[6];
-
 	private int									bordsToitg[]	= new int[6];
 	private int									bordsToitd[]	= new int[6];
-
 	private int									centreTrot[]	= new int[6];
 
 	public PhaseVoiture()
@@ -222,7 +222,18 @@ public class PhaseVoiture extends BasicGameState
 			timerp = time;
 		}
 		iscarhit = false;
-
+		
+		if (posroad > 77000)
+		{
+			speed -= 0.015 * delta;
+			VoitureX += 0.01*delta;
+			if (VoitureX >=1045)
+			{
+				VoitureX = 1045;
+				speed = 0;
+				sbg.enterState(5,new FadeOutTransition(), new FadeInTransition());
+			}
+		}
 	}
 
 	@Override
