@@ -165,8 +165,7 @@ public class PhaseVoiture extends BasicGameState
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 
-		Input input = Game.input;
-		if ((input.isKeyDown(Input.KEY_ESCAPE) || input.isKeyDown(Input.KEY_P)) & timeP > 250 || Game.nlettres <= 0)
+		if ((Game.input.isKeyDown(Input.KEY_ESCAPE) || Game.input.isKeyDown(Input.KEY_P)) & timeP > 250 || Game.nlettres <= 0)
 			{
 				timeP = 0;
 				sbg.enterState(4);
@@ -179,14 +178,14 @@ public class PhaseVoiture extends BasicGameState
 		VoitureX = VoitureX + 64 < 400 ? 400 - 64
 				: VoitureX + 64 > Game.app.getWidth() - 400 ? Game.app.getWidth() - 400 - 64 : VoitureX;
 		vitesseX *= Math.pow(.992, delta);
-		if (input.isKeyDown(Input.KEY_LEFT))
+		if (Game.input.isKeyDown(Input.KEY_LEFT))
 			vitesseX -= delta * .001 * speed;
-		if (input.isKeyDown(Input.KEY_RIGHT))
+		if (Game.input.isKeyDown(Input.KEY_RIGHT))
 			vitesseX += delta * .001 * speed;
 		speed *= Math.pow(.9997, delta);
-		if (input.isKeyDown(Input.KEY_UP))
+		if (Game.input.isKeyDown(Input.KEY_UP))
 			speed += delta * .004;
-		if (input.isKeyDown(Input.KEY_DOWN))
+		if (Game.input.isKeyDown(Input.KEY_DOWN))
 			speed -= delta * .01;
 
 		speed = speed < 1.5 ? 1.5f : speed;
