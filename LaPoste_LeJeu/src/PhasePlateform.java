@@ -23,7 +23,7 @@ public class PhasePlateform extends BasicGameState
 	private boolean						facingLeft	= false, onGround = false;
 	private boolean[]					isvoid		= new boolean[16];
 	private Image[]						bgtex		= new Image[16];
-
+	protected float						timeP		= 0;
 	private SpriteSheet					bgvoid, bgmaison, bgscales;
 
 	public PhasePlateform()
@@ -108,6 +108,14 @@ public class PhasePlateform extends BasicGameState
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
+
+		if ((Game.input.isKeyDown(Input.KEY_ESCAPE) || Game.input.isKeyDown(Input.KEY_P)) & timeP > 250
+				|| Game.nlettres <= 0)
+			{
+				timeP = 0;
+				sbg.enterState(4);
+			}
+		timeP+=delta;
 		Vperso.scale(.999f);
 		Vperso.y += .001 * delta;
 		if (Game.input.isKeyDown(Input.KEY_LEFT))
