@@ -73,6 +73,8 @@ public class PhasePlateform extends BasicGameState
 						Platforms.add(new Rectangle(i * Game.app.getWidth() * .25f,
 								(j + 1) * Game.app.getHeight() * .25f, Game.app.getWidth() * .25f, 1));
 				}
+		
+		
 		Platforms.add(new Rectangle(400+74,225+10,100,4));
 		Platforms.add(new Rectangle(400+75,225+113,99,3));
 		Platforms.add(new Rectangle(400+218,225+60,105,4));
@@ -94,7 +96,7 @@ public class PhasePlateform extends BasicGameState
 		Platforms.add(new Rectangle(800+186,675+142,34,3));
 		Platforms.add(new Rectangle(800+273,675+19,26,20));
 		Platforms.add(new Rectangle(800+341,675+18,26,16));
-		Platforms.add(new Rectangle(800+384,675+5,14,15));
+		Platforms.add(new Rectangle(800+384,675+5,14,15)); 
 		
 	}
 
