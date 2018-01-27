@@ -1,3 +1,4 @@
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -9,7 +10,7 @@ public class Paramettres extends BasicGameState
 {
 	protected static int	difficulte;
 	protected static float	volume;
-	private static int		choix, pVolume;
+	private static int		choix, pVolume = 50;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
@@ -24,6 +25,7 @@ public class Paramettres extends BasicGameState
 		MenuStart.startBackground.draw(75, 0);
 		Game.slicker.drawString(100, 100, "Difficulte :");
 		Game.slicker.drawString(100, 200, "Volume");
+		Game.slicker.drawString(100, 300, "Main Menu");
 		switch (difficulte)
 		{
 			case 0:
@@ -42,15 +44,23 @@ public class Paramettres extends BasicGameState
 				break;
 			}
 		}
-		
+
 		Game.slicker.drawString(250, 200, Integer.toString(pVolume));
+		g.setColor(Color.lightGray);
+		if (choix == 0 | choix == 1)
+		{
+			g.drawRect(240, 90 + ((float) choix * 100), 110, 50);
+		} else
+		{
+			g.drawRect(90, 90 + ((float) choix * 100), 200, 50);
+		}
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int g) throws SlickException
 	{
-		boolean down = Game.input.isKeyPressed(Input.KEY_DOWN), up = Game.input.isKeyPressed(Input.KEY_UP),
-				left = Game.input.isKeyPressed(Input.KEY_LEFT), right = Game.input.isKeyPressed(Input.KEY_RIGHT);
+		boolean down = Game.input.isKeyPressed(Input.KEY_DOWN), up = Game.input.isKeyPressed(Input.KEY_UP), left = Game.input.isKeyPressed(Input.KEY_LEFT), right = Game.input.isKeyPressed(Input.KEY_RIGHT), enter = Game.input.isKeyPressed(Input.KEY_ENTER);
+
 		if (down)
 		{
 			choix++;
@@ -61,9 +71,9 @@ public class Paramettres extends BasicGameState
 		}
 		else if (up & choix == 0)
 		{
-			choix = 1;
+			choix = 2;
 		}
-		choix %= 2;
+		choix %= 3;
 		
 		if (choix == 0)
 		{
@@ -97,6 +107,13 @@ public class Paramettres extends BasicGameState
 			}
 			pVolume %= 100;
 			volume = pVolume/100;
+		}else if(choix == 2)
+		{
+			if (enter)
+			{
+				Game.state = 100;
+				sbg.enterState(100);
+			}
 		}
 	}
 

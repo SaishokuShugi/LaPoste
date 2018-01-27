@@ -55,10 +55,10 @@ public class MenuStart extends BasicGameState
 		choix %= 2;
 
 		if (enter)
-			{
-				Game.state = choix;
-				sbg.enterState(choix);
-			}
+		{
+			Game.state = choix;
+			sbg.enterState(choix);
+		}
 		time += delta;
 
 	}
