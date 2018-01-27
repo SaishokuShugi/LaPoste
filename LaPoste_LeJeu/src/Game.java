@@ -53,6 +53,7 @@ public class Game extends StateBasedGame
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new Paramettres());
+		Jazzy = new Music("res/Blusy.ogg");
 
 		// gc.setTargetFrameRate(120);
 

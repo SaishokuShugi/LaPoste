@@ -23,6 +23,7 @@ public class MenuStart extends BasicGameState
 	{
 		// TODO Auto-generated method stub
 		startBackground = new Image("/res/testMenuBackground.png");
+		Game.Jazzy.loop();
 	}
 
 	@Override
