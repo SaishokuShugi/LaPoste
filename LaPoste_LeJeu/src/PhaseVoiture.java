@@ -29,6 +29,7 @@ public class PhaseVoiture extends BasicGameState
 
 	private int							centreTrot[]	= new int[6];
 
+
 	public PhaseVoiture()
 	{
 	}
@@ -78,6 +79,7 @@ public class PhaseVoiture extends BasicGameState
 		bordsToitg[0] = Game.random.nextInt(6);
 	}
 
+	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
