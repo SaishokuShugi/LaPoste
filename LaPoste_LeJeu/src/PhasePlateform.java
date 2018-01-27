@@ -76,7 +76,7 @@ public class PhasePlateform extends BasicGameState
 						onGround = true;
 						Pperso = opp;
 						hitboxPerso.setLocation(Pperso);
-						Vperso.y = -.01f;
+						Vperso.y = -.03f;
 						Vperso.x *= 0;
 						break;
 					}
