@@ -8,9 +8,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Paramettres extends BasicGameState
 {
-	protected static int	difficulte;
-	protected static float	volume;
-	private static int		choix, pVolume = 50;
+	protected static int	difficulte, pVolume = 50;
+	private static int		choix;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
@@ -95,18 +94,18 @@ public class Paramettres extends BasicGameState
 		{
 			if (right)
 			{
-				pVolume++;
+				pVolume+=10;
 			}
 			else if (left & pVolume > 0)
 			{
-				pVolume--;
+				pVolume-=10;
 			}
 			else if (left & pVolume == 0)
 			{
-				pVolume = 99;
+				pVolume = 90;
 			}
 			pVolume %= 100;
-			volume = pVolume/100;
+			gc.setMusicVolume(((float)(pVolume))/100);
 		}else if(choix == 2)
 		{
 			if (enter)

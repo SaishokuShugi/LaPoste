@@ -26,7 +26,6 @@ public class MenuStart extends BasicGameState
 		// TODO Auto-generated method stub
 		startBackground = new Image("/res/testMenuBackground.png");
 		Game.Jazzy.loop();
-		Game.Jazzy.setVolume(Paramettres.volume);
 	}
 
 	@Override
@@ -37,6 +36,7 @@ public class MenuStart extends BasicGameState
 		// g.fillRect(0, 0, Game.app.getWidth(), Game.app.getHeight());
 		Game.slicker.drawString(700, 400, "Start", Color.lightGray);
 		Game.slicker.drawString(660, 500, "Paramettres", Color.lightGray);
+		Game.slicker.drawString(700, 600, "Exit", Color.lightGray);
 		g.setColor(Color.lightGray);
 		g.drawRect(635, 385 + ((float) choix * 100), 200, 50);
 	}
@@ -51,11 +51,15 @@ public class MenuStart extends BasicGameState
 		else if (up & choix > 0)
 			choix--;
 		else if (up & choix == 0)
-			choix = 1;
-		choix %= 2;
+			choix = 2;
+		choix %= 3;
 
 		if (enter)
 		{
+			if (choix == 2)
+			{
+				System.exit(0);
+			}
 			Game.state = choix;
 			sbg.enterState(choix);
 		}
