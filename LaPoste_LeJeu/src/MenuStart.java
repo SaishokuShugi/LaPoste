@@ -16,12 +16,8 @@ public class MenuStart extends BasicGameState
 {
 	public static Image	startBackground;
 
-<<<<<<< HEAD
-	private static int			choix	= 0;
-	private int time = 0;
-=======
 	private static int	choix	= 0;
->>>>>>> branch 'master' of https://github.com/SaishokuShugi/LaPoste
+	private int			time	= 0;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -42,16 +38,14 @@ public class MenuStart extends BasicGameState
 		Game.slicker.drawString(660, 500, "Paramettres", Color.lightGray);
 		g.setColor(Color.lightGray);
 		g.drawRect(635, 385 + ((float) choix * 100), 200, 50);
-<<<<<<< HEAD
 		for (int i = 0; i < 100; i++)
-		{
-			for (int j = 0; j < 100; j++)
 			{
-				Game.boom.draw(60*i, 60*j,g,time);
+				for (int j = 0; j < 100; j++)
+					{
+						Game.boom.draw(60 * i, 60 * j, g, time);
+					}
 			}
-		}
-=======
->>>>>>> branch 'master' of https://github.com/SaishokuShugi/LaPoste
+
 	}
 
 	@Override
@@ -68,10 +62,10 @@ public class MenuStart extends BasicGameState
 		choix %= 2;
 
 		if (enter)
-		{
-			sbg.enterState(choix);
-		}
-		time+=g;
+			{
+				sbg.enterState(choix);
+			}
+		time += g;
 
 	}
 

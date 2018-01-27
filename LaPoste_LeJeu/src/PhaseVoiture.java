@@ -35,22 +35,22 @@ public class PhaseVoiture extends BasicGameState
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		for (int i = 0; i < (int) (Game.app.getHeight() / 128f) + 1; i++)
-		{
-			g.drawImage(Road, Game.app.getWidth() * .5f + 64f, (float) ((i - 1) * 128. + posroad % 128.));
-		}
+			{
+				g.drawImage(Road, Game.app.getWidth() * .5f + 64f, (float) ((i - 1) * 128. + posroad % 128.));
+			}
 		Road.rotate(180);
 		for (int i = 0; i < (int) (Game.app.getHeight() / 128f) + 1; i++)
-		{
-			g.drawImage(Road, Game.app.getWidth() * .5f - 320f, (float) ((i - 1) * 128. + posroad % 128.));
-		}
+			{
+				g.drawImage(Road, Game.app.getWidth() * .5f - 320f, (float) ((i - 1) * 128. + posroad % 128.));
+			}
 		Road.rotate(180);
 
 		g.drawImage(VoitureHero, VoitureX, VoitureY);
 
 		for (Voiture voiture : Voitures)
-		{
-			voiture.render(g);
-		}
+			{
+				voiture.render(g);
+			}
 
 	}
 
@@ -72,25 +72,21 @@ public class PhaseVoiture extends BasicGameState
 			speed += delta * .004;
 		if (input.isKeyDown(Input.KEY_DOWN))
 			speed -= delta * .01;
-<<<<<<< HEAD
-		speed = speed < Voiture.v0-.5f ? Voiture.v0-.5f : speed;
-		posroad+=.1*speed*delta;
-=======
+
 		speed = speed < 1.5 ? 1.5f : speed;
 		posroad += .1 * speed * delta;
->>>>>>> branch 'master' of https://github.com/SaishokuShugi/LaPoste
 
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique
 		if ((int) ((speed - Voiture.v0) * time / 6000) > (int) ((speed - Voiture.v0) * (time - delta) / 6000))
-		{
-			if (Game.random.nextInt(3) <= 1)
-				Voitures.add(new VoitureUp());
-		}
+			{
+				if (Game.random.nextInt(3) <= 1)
+					Voitures.add(new VoitureUp());
+			}
 		if ((int) ((speed + Voiture.v0) * time / 6000) > (int) ((speed + Voiture.v0) * (time - delta) / 6000))
-		{
-			if (Game.random.nextInt(3) <= 1)
-				Voitures.add(new VoitureDown());
-		}
+			{
+				if (Game.random.nextInt(3) <= 1)
+					Voitures.add(new VoitureDown());
+			}
 	}
 
 	@Override
