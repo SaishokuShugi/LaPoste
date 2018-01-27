@@ -112,7 +112,7 @@ public class PhasePlateform extends BasicGameState
 		imgPerso = perso.getSprite(8, 1);
 		//Platforms.add(new Rectangle(0, Game.app.getHeight() - 10, Game.app.getWidth(), 20));
 		Pperso = new Vector2f(100, 20);
-		hitboxPerso = new Rectangle(Pperso.x+10, Pperso.y-15, 42-20, 74-15);
+		hitboxPerso = new Rectangle(Pperso.x+10, Pperso.y-15, 42-20, 74-15); 
 		Vperso = new Vector2f(0, 0);
 		initmap();
 
