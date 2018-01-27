@@ -157,14 +157,8 @@ public class PhaseVoiture extends BasicGameState
 		lastPerte.removeIf((PaperParticle lastPerte) -> (time - lastPerte.t0 > 10 * perte.f));
 		Progression.draw(400, 0);
 		minicar.draw(400 + posroad / 100, 0);
-		float shurikenX = 10, shurikenY = 10;
-		for (int i = 0; i < Game.nlettres; i++)
-		{
-			shurikenX += 10;
-			shurikenX %= 5;
-			shurikenY += i / 5;
-			Game.shuriken.draw(shurikenX, shurikenY);
-		}
+		Game.shuriken.draw(250, 0);
+		Game.slicker.drawString(270, 5, " X " + Integer.toString(Game.nlettres));
 
 	}
 

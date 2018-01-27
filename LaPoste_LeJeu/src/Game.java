@@ -27,7 +27,7 @@ public class Game extends StateBasedGame
 	public static Sound					pouet;
 	public static Animation				boom;
 	public static int					state;
-	public static int					nlettres	= 48;
+	public static int					nlettres	= 20;
 	public static Image					shuriken;
 
 	public Game(String name)
