@@ -35,6 +35,7 @@ public class VoitureUp extends Voiture
 		if (PhaseVoiture.VoitureHitbox.intersects(hitbox))
 			destroyed=true;
 		return y > Game.app.getHeight() || y < -129f;  
+		
 	}
 
 }

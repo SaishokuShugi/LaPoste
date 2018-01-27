@@ -15,6 +15,7 @@ public abstract class Voiture
 
 	public abstract void render(Graphics g);
 
+	
 	public abstract boolean update(int delta);
 
 }

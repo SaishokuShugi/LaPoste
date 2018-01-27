@@ -35,6 +35,7 @@ public class VoitureDown extends Voiture
 			destroyed=true;
 		return y > Game.app.getHeight();
 		
+		
 	}
 
 
