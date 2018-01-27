@@ -38,14 +38,6 @@ public class MenuStart extends BasicGameState
 		Game.slicker.drawString(660, 500, "Paramettres", Color.lightGray);
 		g.setColor(Color.lightGray);
 		g.drawRect(635, 385 + ((float) choix * 100), 200, 50);
-		for (int i = 0; i < 100; i++)
-			{
-				for (int j = 0; j < 100; j++)
-					{
-						Game.boom.draw(60 * i, 60 * j, g, time);
-					}
-			}
-
 	}
 
 	@Override
