@@ -46,7 +46,7 @@ public class MenuStart extends BasicGameState
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		startBackground.draw(0, 0);
+		startBackground.draw(75, 0);
 		g.setColor(new Color(255, 255, 255, 100));
 		g.fillRect(0, 0, Game.app.getWidth(), Game.app.getHeight());
 		slicker.drawString(700, 400, "Start", Color.lightGray);
