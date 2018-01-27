@@ -52,7 +52,7 @@ public class MenuStart extends BasicGameState
 		slicker.drawString(700, 400, "Start", Color.lightGray);
 		slicker.drawString(660, 500, "Paramettres", Color.lightGray);
 		g.setColor(Color.lightGray);
-		g.drawRect(125, 225 + ((float) choix * 50), 200, 25);
+		g.drawRect(635, 385 + ((float) choix * 100), 200, 50);
 	}
 
 	@Override
