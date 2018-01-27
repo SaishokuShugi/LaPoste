@@ -15,7 +15,7 @@ public class PhaseVoiture extends BasicGameState
 
 	protected static float						VoitureX		= Game.app.getWidth() * .5f + 128f;
 	protected static float						VoitureY		= Game.app.getHeight() - 300f;
-	protected static Image						VoitureHero, Road;
+	protected static Image						VoitureHero, Road, Progression, minicar;
 	protected static Rectangle					VoitureHitbox;
 	protected static SpriteSheet				Trottoirs, Toits, CentreSprite;
 	protected static ArrayList<Voiture>			Voitures		= new ArrayList<Voiture>();
@@ -90,6 +90,8 @@ public class PhaseVoiture extends BasicGameState
 		gc.setMouseGrabbed(true);
 		VoitureHero = new Image("res/Car.png");
 		Road = new Image("res/Route.png");
+		Progression = new Image("res/BarreDeProgression.png");
+		minicar = new Image("res/MiniCar.png");
 		Trottoirs = new SpriteSheet("res/SpriteRoute.png", 256, 256);
 		Toits = new SpriteSheet("res/SpriteToit.png", 256, 256);
 		CentreSprite = new SpriteSheet("res/SpriteCenter.png", 128, 256);
@@ -154,7 +156,9 @@ public class PhaseVoiture extends BasicGameState
 					perte.draw(pp.x, pp.y, g, time - pp.t0);
 			}
 		lastPerte.removeIf((PaperParticle lastPerte) -> (time - lastPerte.t0 > 10 * perte.f));
-
+		Progression.draw(300, 0);
+		minicar.draw(300+posroad/100, 0);
+		
 	}
 
 	@Override
