@@ -69,22 +69,23 @@ public class PhaseVoiture extends BasicGameState
 			vitesseX -= delta * .01;
 		if (input.isKeyDown(Input.KEY_RIGHT))
 			vitesseX += delta * .01;
+		speed *= Math.pow(.9997, delta);
 		if (input.isKeyDown(Input.KEY_UP))
-			speed += delta * .001;
+			speed += delta * .004;
 		if (input.isKeyDown(Input.KEY_DOWN))
-			speed -= delta * .001;
+			speed -= delta * .01;
 		speed = speed < 0 ? 0 : speed;
 		posroad+=.1*speed*delta;
 
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique
-		if ((int) ((speed - Voiture.v0) * time / 3000) > (int) ((speed - Voiture.v0) * (time - delta) / 3000))
+		if ((int) ((speed - Voiture.v0) * time / 6000) > (int) ((speed - Voiture.v0) * (time - delta) / 6000))
 			{
-				if (Game.random.nextInt(6) <= 1)
+				if (Game.random.nextInt(3) <= 1)
 					Voitures.add(new VoitureUp());
 			}
-		if ((int) ((speed + Voiture.v0) * time / 3000) > (int) ((speed + Voiture.v0) * (time - delta) / 3000))
+		if ((int) ((speed + Voiture.v0) * time / 6000) > (int) ((speed + Voiture.v0) * (time - delta) / 6000))
 			{
-				if (Game.random.nextInt(6) <= 1)
+				if (Game.random.nextInt(3) <= 1)
 					Voitures.add(new VoitureDown());
 			}
 	}
