@@ -156,7 +156,7 @@ public class PhaseVoiture extends BasicGameState
 	{
 
 		Input input = Game.input;
-		if ((input.isKeyDown(Input.KEY_ESCAPE) || input.isKeyDown(Input.KEY_P)) & timeP > 250)
+		if ((input.isKeyDown(Input.KEY_ESCAPE) || input.isKeyDown(Input.KEY_P)) & timeP > 250||Game.nlettres<=0)
 			{
 				timeP = 0;
 				sbg.enterState(4);
@@ -164,7 +164,7 @@ public class PhaseVoiture extends BasicGameState
 		time += delta;
 		timeP += delta;
 		VoitureX += vitesseX * delta;
-		if (VoitureX < 520 | VoitureX > Game.app.getWidth() - 520)
+		if (VoitureX < 520 | VoitureX > Game.app.getWidth() - 520 && time-lastPerte>100)
 			iscarhit = true;
 		VoitureX = VoitureX < 400 ? 400 : VoitureX > Game.app.getWidth() - 400 ? Game.app.getWidth() - 400 : VoitureX;
 		vitesseX *= Math.pow(.992, delta);
