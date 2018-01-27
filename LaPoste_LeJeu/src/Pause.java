@@ -20,7 +20,7 @@ public class Pause extends BasicGameState
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		MenuStart.startBackground.draw(75, 0);
+		MenuStart.startBackground.draw(1000, 300);
 		Game.slicker.drawString(100, 100, "Volume");
 		Game.slicker.drawString(100, 200, "Main Menu");
 		Game.slicker.drawString(250, 100, Integer.toString(pVolume));

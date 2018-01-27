@@ -21,7 +21,7 @@ public class Paramettres extends BasicGameState
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		MenuStart.startBackground.draw(75, 0);
+		MenuStart.startBackground.draw(1000, 300);
 		Game.slicker.drawString(100, 100, "Difficulte :");
 		Game.slicker.drawString(100, 200, "Volume");
 		Game.slicker.drawString(100, 300, "Main Menu");
