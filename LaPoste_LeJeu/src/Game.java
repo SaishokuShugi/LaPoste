@@ -24,6 +24,7 @@ public class Game extends StateBasedGame
 	public static UnicodeFont			slicker;
 	public static Music					Jazzy;
 	public static Animation				boom;
+	public static int 					state;
 
 	public Game(String name)
 	{

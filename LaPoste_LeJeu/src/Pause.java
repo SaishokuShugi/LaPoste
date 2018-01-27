@@ -30,7 +30,7 @@ public class Pause extends BasicGameState
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) throws SlickException
 	{
 		if (Game.input.isKeyDown(Input.KEY_ESCAPE)||Game.input.isKeyDown(Input.KEY_P))
-			sbg.enterState(1);
+			sbg.enterState(Game.state);
 
 	}
 
