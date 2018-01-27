@@ -1,6 +1,7 @@
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.geom.Rectangle;
 
 public class VoitureDown extends Voiture
 {
@@ -12,6 +13,7 @@ public class VoitureDown extends Voiture
 		voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
 		image = voituresImg.getSprite(Game.random.nextInt(3), Game.random.nextInt(3));
 		image.rotate(180f);
+		hitbox=new Rectangle(x,y,image.getWidth(),image.getHeight());
 		if (voie = Game.random.nextBoolean())
 			x += 128f;
 
@@ -28,7 +30,9 @@ public class VoitureDown extends Voiture
 	{
 		speed = (PhaseVoiture.speed + v0) * .1f + (voie ? .05f : 0);
 		y += delta * speed;
+		hitbox.setLocation(x, y);
 		return y > Game.app.getHeight();
+		
 	}
 
 
