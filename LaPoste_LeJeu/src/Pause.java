@@ -22,9 +22,9 @@ public class Pause extends BasicGameState
 	@Override
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics arg2) throws SlickException
 	{
-		// TODO Stub de la méthode généré automatiquement
-
+		MenuStart.startBackground.draw(75, 0);
 	}
+
 
 	@Override
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
