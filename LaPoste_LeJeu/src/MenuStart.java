@@ -41,7 +41,7 @@ public class MenuStart extends BasicGameState
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame sbg, int g) throws SlickException
+	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		boolean down = Game.input.isKeyPressed(Input.KEY_DOWN), up = Game.input.isKeyPressed(Input.KEY_UP),
 				enter = Game.input.isKeyPressed(Input.KEY_ENTER);
@@ -57,7 +57,7 @@ public class MenuStart extends BasicGameState
 			{
 				sbg.enterState(choix);
 			}
-		time += g;
+		time += delta;
 
 	}
 
