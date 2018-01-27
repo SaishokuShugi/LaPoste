@@ -22,9 +22,8 @@ public class Game extends StateBasedGame
 	protected static int				Difficultee;
 	public static Font					UIFont1;
 	public static UnicodeFont			slicker;
-	public static Music 				Jazzy;
+	public static Music					Jazzy;
 	public static Animation				boom;
-	
 
 	public Game(String name)
 	{
@@ -54,11 +53,10 @@ public class Game extends StateBasedGame
 		slicker.loadGlyphs();
 		input = gc.getInput();
 		Jazzy = new Music("res/Blusy.ogg");
-		boom = new Animation(new SpriteSheet("res/explosion.png",128,128),100);
+		boom = new Animation(new SpriteSheet("res/explosion.png", 128, 128), 100);
 		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new Paramettres());
-
 
 		// gc.setTargetFrameRate(120);
 

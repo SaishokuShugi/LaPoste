@@ -25,7 +25,6 @@ public class Pause extends BasicGameState
 		MenuStart.startBackground.draw(75, 0);
 	}
 
-
 	@Override
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
 	{

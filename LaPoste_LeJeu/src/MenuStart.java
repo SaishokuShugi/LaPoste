@@ -14,10 +14,14 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class MenuStart extends BasicGameState
 {
-	public static Image			startBackground;
+	public static Image	startBackground;
 
+<<<<<<< HEAD
 	private static int			choix	= 0;
 	private int time = 0;
+=======
+	private static int	choix	= 0;
+>>>>>>> branch 'master' of https://github.com/SaishokuShugi/LaPoste
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -32,12 +36,13 @@ public class MenuStart extends BasicGameState
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		startBackground.draw(75, 0);
-		//g.setColor(new Color(255, 255, 255, 100));
-		//g.fillRect(0, 0, Game.app.getWidth(), Game.app.getHeight());
+		// g.setColor(new Color(255, 255, 255, 100));
+		// g.fillRect(0, 0, Game.app.getWidth(), Game.app.getHeight());
 		Game.slicker.drawString(700, 400, "Start", Color.lightGray);
 		Game.slicker.drawString(660, 500, "Paramettres", Color.lightGray);
 		g.setColor(Color.lightGray);
 		g.drawRect(635, 385 + ((float) choix * 100), 200, 50);
+<<<<<<< HEAD
 		for (int i = 0; i < 100; i++)
 		{
 			for (int j = 0; j < 100; j++)
@@ -45,6 +50,8 @@ public class MenuStart extends BasicGameState
 				Game.boom.draw(60*i, 60*j,g,time);
 			}
 		}
+=======
+>>>>>>> branch 'master' of https://github.com/SaishokuShugi/LaPoste
 	}
 
 	@Override
