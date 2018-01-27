@@ -20,10 +20,23 @@ public class PhasePlateform extends BasicGameState
 	private Rectangle					hitboxPerso;
 	private static ArrayList<Rectangle>	Platforms	= new ArrayList<Rectangle>();
 	private Vector2f					Vperso;
-	private boolean						facingLeft	= false,onGround = false;
+	private boolean						facingLeft	= false, onGround = false;
+	private boolean[]					ispassage		= new boolean[16];
+	private Image[]						bgtex		= new Image[16];
 
 	public PhasePlateform()
 	{
+	}
+
+	private void initmap()
+	{
+		for (int i = 0; i < 4; i++)
+			for (int j = 0; j < 4; j++)
+				{
+					int n = Game.random.nextInt(4);
+					ispassage[j + 4 * i] = j == n;
+				}
+
 	}
 
 	@Override
@@ -60,10 +73,10 @@ public class PhasePlateform extends BasicGameState
 				Vperso.x = .3f;
 				facingLeft = false;
 			}
-		if((Game.input.isKeyDown(Input.KEY_SPACE)||Game.input.isKeyDown(Input.KEY_UP))& onGround)
+		if ((Game.input.isKeyDown(Input.KEY_SPACE) || Game.input.isKeyDown(Input.KEY_UP)) & onGround)
 			{
-			Vperso.y = -.5f;
-			onGround=false;
+				Vperso.y = -.5f;
+				onGround = false;
 			}
 		Vector2f scaledV = new Vector2f(delta * Vperso.x, delta * Vperso.y);
 		Vector2f opp = Pperso.copy();
@@ -81,8 +94,8 @@ public class PhasePlateform extends BasicGameState
 						break;
 					}
 			}
-		if(Vperso.y>0)
-			onGround=false;
+		if (Vperso.y > 0)
+			onGround = false;
 	}
 
 	@Override
