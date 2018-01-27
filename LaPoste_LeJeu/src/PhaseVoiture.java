@@ -12,23 +12,23 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PhaseVoiture extends BasicGameState
 {
 
-	protected static float				VoitureX		= Game.app.getWidth() * .5f + 128f;
-	protected static float				VoitureY		= Game.app.getHeight() - 300f;
-	protected static Image				VoitureHero, Road;
-	protected static SpriteSheet		Trottoirs, Toits, CentreSprite;
-	protected static ArrayList<Voiture>	Voitures		= new ArrayList<Voiture>();
-	protected int						time			= 0, timeP = 0;
-	public static float					speed			= 2.f;
-	protected static float				posroad			= 0, postoit = 0;
-	private static float				vitesseX		= 0f;
-	private int							bordsSolg[]		= new int[6];
-	private int							bordsSold[]		= new int[6];
+	protected static float					VoitureX		= Game.app.getWidth() * .5f + 128f;
+	protected static float					VoitureY		= Game.app.getHeight() - 300f;
+	protected static Image					VoitureHero, Road;
+	protected static SpriteSheet			Trottoirs, Toits, CentreSprite;
+	protected static ArrayList<Voiture>		Voitures		= new ArrayList<Voiture>();
+	protected static ArrayList<Lampadaire>	lampes			= new ArrayList<Lampadaire>();
+	protected int							time			= 0, timeP = 0;
+	public static float						speed			= 2.f;
+	protected static float					posroad			= 0, postoit = 0;
+	private static float					vitesseX		= 0f;
+	private int								bordsSolg[]		= new int[6];
+	private int								bordsSold[]		= new int[6];
 
-	private int							bordsToitg[]	= new int[6];
-	private int							bordsToitd[]	= new int[6];
+	private int								bordsToitg[]	= new int[6];
+	private int								bordsToitd[]	= new int[6];
 
-	private int							centreTrot[]	= new int[6];
-
+	private int								centreTrot[]	= new int[6];
 
 	public PhaseVoiture()
 	{
@@ -79,7 +79,6 @@ public class PhaseVoiture extends BasicGameState
 		bordsToitg[0] = Game.random.nextInt(6);
 	}
 
-	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
@@ -114,6 +113,7 @@ public class PhaseVoiture extends BasicGameState
 				Image trott = CentreSprite.getSprite(centreTrot[i] % 2, centreTrot[i] / 2);
 				g.drawImage(trott, Game.app.getWidth() * .5f - 64f, dep);
 			}
+
 		for (int i = 0; i < (int) (Game.app.getHeight() / 256f) + 2; i++)
 			{
 				float dep = (float) ((i - 1) * 256. + posroad % 256.);
@@ -129,6 +129,10 @@ public class PhaseVoiture extends BasicGameState
 		for (Voiture voiture : Voitures)
 			{
 				voiture.render(g);
+			}
+		for (Lampadaire l : lampes)
+			{
+				l.render(g);
 			}
 		for (int i = 0; i < (int) (Game.app.getHeight() / 256f) + 2; i++)
 			{
@@ -167,6 +171,7 @@ public class PhaseVoiture extends BasicGameState
 		speed = speed < 1.5 ? 1.5f : speed;
 
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique
+		lampes.removeIf((Lampadaire lampes) -> (lampes.update(delta)));
 		if ((int) ((speed - Voiture.v0) * time / 6000) > (int) ((speed - Voiture.v0) * (time - delta) / 6000))
 			{
 				if (Game.random.nextInt(3) <= 1)
@@ -176,6 +181,11 @@ public class PhaseVoiture extends BasicGameState
 			{
 				if (Game.random.nextInt(3) <= 1)
 					Voitures.add(new VoitureDown());
+			}
+		if ((int) (speed * time / 6000) > (int) (speed * (time - delta) / 6000))
+			{
+				if (Game.random.nextInt(3) <= 1)
+					lampes.add(new Lampadaire());
 			}
 		if ((int) (posroad / 256f) != (int) ((posroad += .1 * speed * delta) / 256f))
 			{

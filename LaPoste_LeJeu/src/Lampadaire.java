@@ -11,9 +11,9 @@ public class Lampadaire
 	public Lampadaire() throws SlickException
 	{
 		y = -128f;
-		x=-32;
+		x=Game.app.getWidth() * .5f -32;
 		SpriteSheet ss = new SpriteSheet("res/Lampadaires.png",64,64);
-		image = ss.getSprite(0, Game.random.nextInt(2));
+		image = ss.getSprite(0,Game.random.nextInt(2));
 	}
 
 	public void render(Graphics g)
@@ -23,7 +23,7 @@ public class Lampadaire
 	
 	public boolean update(int delta)
 	{
-		y += delta *PhaseVoiture.speed;
+		y += delta *PhaseVoiture.speed*.1;
 		return y > Game.app.getHeight() || y < -129f;
 	}
 
