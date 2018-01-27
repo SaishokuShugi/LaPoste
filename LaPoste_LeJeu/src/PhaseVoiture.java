@@ -11,12 +11,13 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PhaseVoiture extends BasicGameState
 {
 
-	protected static float				VoitureX	= Game.app.getWidth() * .5f + 128f;
-	protected static float				VoitureY	= Game.app.getHeight() - 300f;
+	protected static float				VoitureX		= Game.app.getWidth() * .5f + 128f;
+	protected static float				VoitureY		= Game.app.getHeight() - 300f;
 	protected static Image				VoitureHero;
-	protected static ArrayList<Voiture>	Voitures	= new ArrayList<Voiture>();
-	protected int						time		= 0;
-	public float speed = 1f;
+	protected static ArrayList<Voiture>	Voitures		= new ArrayList<Voiture>();
+	protected int						time			= 0;
+	public float						speed			= 1f;
+	private static float				vitesseX	= 0f;
 
 	public PhaseVoiture()
 	{
@@ -27,8 +28,6 @@ public class PhaseVoiture extends BasicGameState
 	{
 
 		VoitureHero = new Image("res/Car.png");
-		Voitures.add(new VoitureUp());
-		Voitures.add(new VoitureDown());
 	}
 
 	@Override
@@ -49,17 +48,19 @@ public class PhaseVoiture extends BasicGameState
 	{
 		time += delta;
 		Input input = Game.input;
+		VoitureX+=vitesseX*delta;
+		vitesseX*=.992;
 		if (input.isKeyDown(Input.KEY_LEFT))
-			VoitureX -= delta * 1.;
+			vitesseX -= delta * .01;
 		if (input.isKeyDown(Input.KEY_RIGHT))
-			VoitureX += delta * 1.;
+			vitesseX += delta * .01;
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique
-		if ((int)(speed*time / 1200) > (int)(speed*(time - delta) / 1200))
+		if ((int) (speed * time / 1200) > (int) (speed * (time - delta) / 1200))
 			{
 				if (Game.random.nextInt(8) <= 1)
 					Voitures.add(new VoitureUp());
 			}
-		if ((int)(speed*time / 300) > (int)(speed*(time - delta) / 300))
+		if ((int) (speed * time / 300) > (int) (speed * (time - delta) / 300))
 			{
 				if (Game.random.nextInt(8) <= 1)
 					Voitures.add(new VoitureDown());
