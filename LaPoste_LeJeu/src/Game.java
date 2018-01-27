@@ -55,7 +55,7 @@ public class Game extends StateBasedGame
 		slicker.getEffects().add(new ColorEffect(java.awt.Color.BLUE));
 		slicker.addAsciiGlyphs();
 		slicker.loadGlyphs();
-		UIFont1 = UIFont1.deriveFont(java.awt.Font.PLAIN, 45.f);
+		UIFont1 = UIFont1.deriveFont(java.awt.Font.PLAIN, 38.f);
 		titre = new UnicodeFont(UIFont1);
 		titre.addAsciiGlyphs();
 		titre.getEffects().add(new ColorEffect(java.awt.Color.BLUE));
