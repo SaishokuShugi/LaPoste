@@ -19,7 +19,6 @@ public abstract class Voiture
 			{
 				if ((PhaseVoiture.time - timedest) < 16 * Game.boom.f)
 					{
-						System.out.println(PhaseVoiture.time - timedest);
 						Game.boom.draw(x, y, g, PhaseVoiture.time - timedest);
 						return false;
 					} else

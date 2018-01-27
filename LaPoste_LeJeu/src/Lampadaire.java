@@ -2,11 +2,15 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.geom.Rectangle;
 
 public class Lampadaire
 {
 	protected float	x, y;
 	protected Image	image;
+	protected boolean				destroyed	= false;
+	protected Circle				hitbox;
 
 	public Lampadaire() throws SlickException
 	{
@@ -14,6 +18,7 @@ public class Lampadaire
 		x=Game.app.getWidth() * .5f -32;
 		SpriteSheet ss = new SpriteSheet("res/Lampadaires.png",64,64);
 		image = ss.getSprite(0,Game.random.nextInt(2));
+		hitbox = new Circle(x+32,y+32,32);
 	}
 
 	public void render(Graphics g)
@@ -24,6 +29,11 @@ public class Lampadaire
 	public boolean update(int delta)
 	{
 		y += delta *PhaseVoiture.speed*.1;
+		hitbox.setLocation(x+32,y+32);
+		if (!destroyed && (PhaseVoiture.VoitureHitbox.intersects(hitbox)))
+			{
+				destroyed = true;
+			}
 		return y > Game.app.getHeight() || y < -129f;
 	}
 

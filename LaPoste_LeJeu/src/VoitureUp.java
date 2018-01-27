@@ -25,7 +25,7 @@ public class VoitureUp extends Voiture
 	{
 		speed = (PhaseVoiture.speed - v0) * .1f + (voie ? 0 : .05f);
 		y += delta * speed;
-		hitbox.setLocation(x, y);
+		hitbox.setLocation(x+image.getWidth()/4f, y+image.getWidth()/6f);
 		if (!destroyed && (PhaseVoiture.VoitureHitbox.intersects(hitbox)))
 			{
 				timedest = PhaseVoiture.time;

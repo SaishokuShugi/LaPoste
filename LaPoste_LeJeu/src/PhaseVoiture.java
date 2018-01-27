@@ -169,7 +169,7 @@ public class PhaseVoiture extends BasicGameState
 
 		speed = speed < 1.5 ? 1.5f : speed;
 
-		VoitureHitbox.setLocation(VoitureX, VoitureY);
+		VoitureHitbox.setLocation(VoitureX+VoitureHero.getWidth()/4f, VoitureY+VoitureHero.getWidth()/6f);
 
 		Voitures.removeIf((Voiture Voitures) -> (Voitures.update(delta))); // cherche pas c'est magique
 		lampes.removeIf((Lampadaire lampes) -> (lampes.update(delta)));
