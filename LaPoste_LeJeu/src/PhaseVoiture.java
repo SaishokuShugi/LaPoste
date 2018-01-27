@@ -11,10 +11,10 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PhaseVoiture extends BasicGameState
 {
 
-	protected float VoitureX = Game.app.getWidth() * .5f+128f;
-	protected float VoitureY = Game.app.getHeight() - 300f;
-	protected Image VoitureHero;
-	protected ArrayList<Voiture> VoitureHaut;
+	protected static float VoitureX = Game.app.getWidth() * .5f+128f;
+	protected static float VoitureY = Game.app.getHeight() - 300f;
+	protected static Image VoitureHero;
+	protected static ArrayList<Voiture> VoitureHaut = new ArrayList<Voiture>();
 
 
 	public PhaseVoiture()
@@ -24,6 +24,7 @@ public class PhaseVoiture extends BasicGameState
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
+		
 		VoitureHero = new Image("res/Car.png");
 		VoitureHaut.add(new VoitureUp());
 	}
