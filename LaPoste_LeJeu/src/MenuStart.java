@@ -65,7 +65,7 @@ public class MenuStart extends BasicGameState
 		else if (up & choix > 0)
 			choix--;
 		else if (up & choix == 0)
-			choix = 4;
+			choix = 1;
 		choix %= 2;
 
 		if (enter)
