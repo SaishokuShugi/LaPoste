@@ -33,6 +33,15 @@ public class Pause extends BasicGameState
 		Game.slicker.drawString(100, 200, "Resume");
 		Game.slicker.drawString(100, 300, "Main Menu");
 		Game.slicker.drawString(250, 100, Integer.toString(pVolume));
+		Game.slicker.drawString(900, 20, "Commandes voiture :");
+		Game.slicker.drawString(950, 70, "Flèches <- -> Permet de rouler à gauche/droite,");
+		Game.slicker.drawString(1040, 120, "Flèches ^ v Permet d'accellerer / freiner.");
+		Game.slicker.drawString(1080, 170, "Commandes à pied :");
+		Game.slicker.drawString(1100, 220, "Flèche ^ ou espace pour sauter,");
+		Game.slicker.drawString(1080, 270, "Flèches <- -> Permet de marcher.");
+//		
+//		Game.slicker.drawString(x, y, text);
+		
 		g.setLineWidth(5);
 		g.setColor(Color.blue);
 		if (choix == 0)
