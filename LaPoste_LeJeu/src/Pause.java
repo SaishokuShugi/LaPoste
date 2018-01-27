@@ -23,7 +23,8 @@ public class Pause extends BasicGameState
 		MenuStart.startBackground.draw(0, 0);
 		MenuStart.R4.draw(1000, 550);
 		Game.slicker.drawString(100, 100, "Volume");
-		Game.slicker.drawString(100, 200, "Main Menu");
+		Game.slicker.drawString(100, 200, "Resume");
+		Game.slicker.drawString(100, 300, "Main Menu");
 		Game.slicker.drawString(250, 100, Integer.toString(pVolume));
 		g.setColor(Color.darkGray);
 		if (choix == 0)
@@ -38,15 +39,17 @@ public class Pause extends BasicGameState
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
+
+		boolean down = Game.input.isKeyPressed(Input.KEY_DOWN), up = Game.input.isKeyPressed(Input.KEY_UP), left = Game.input.isKeyPressed(Input.KEY_LEFT), right = Game.input.isKeyPressed(Input.KEY_RIGHT), enter = Game.input.isKeyPressed(Input.KEY_ENTER);
+
 		timer += delta;
-		if ((Game.input.isKeyDown(Input.KEY_ESCAPE)||Game.input.isKeyDown(Input.KEY_P)) & timer > 250)
+		if ((Game.input.isKeyDown(Input.KEY_ESCAPE)||Game.input.isKeyDown(Input.KEY_P) | (choix == 1 & enter)) & timer > 250)
 		{
 			timer = 0;
 			sbg.enterState(Game.state);
 		}
 		
-		boolean down = Game.input.isKeyPressed(Input.KEY_DOWN), up = Game.input.isKeyPressed(Input.KEY_UP), left = Game.input.isKeyPressed(Input.KEY_LEFT), right = Game.input.isKeyPressed(Input.KEY_RIGHT), enter = Game.input.isKeyPressed(Input.KEY_ENTER);
-
+		
 		if (down)
 		{
 			choix++;
@@ -57,9 +60,9 @@ public class Pause extends BasicGameState
 		}
 		else if (up & choix == 0)
 		{
-			choix = 1;
+			choix = 2;
 		}
-		choix %= 2;
+		choix %= 3;
 		
 		if (choix ==0)
 		{
@@ -77,7 +80,7 @@ public class Pause extends BasicGameState
 			}
 			pVolume %= 100;
 			gc.setMusicVolume(((float)(pVolume))/100);
-		}else if(choix == 1)
+		}else if(choix == 2)
 		{
 			if (enter)
 			{
