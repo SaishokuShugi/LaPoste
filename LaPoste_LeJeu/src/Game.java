@@ -21,7 +21,7 @@ public class Game extends StateBasedGame
 	protected static Input				input;
 	protected static Random				random;
 	public static Font					UIFont1;
-	public static UnicodeFont			slicker;
+	public static UnicodeFont			slicker, titre;
 	public static Music					Jazzy;
 	public static Sound					pouet;
 	public static Animation				boom;
@@ -55,6 +55,12 @@ public class Game extends StateBasedGame
 		slicker.getEffects().add(new ColorEffect(java.awt.Color.BLUE));
 		slicker.addAsciiGlyphs();
 		slicker.loadGlyphs();
+		UIFont1 = UIFont1.deriveFont(java.awt.Font.PLAIN, 45.f);
+		titre = new UnicodeFont(UIFont1);
+		titre.addAsciiGlyphs();
+		titre.getEffects().add(new ColorEffect(java.awt.Color.BLUE));
+		titre.addAsciiGlyphs();
+		titre.loadGlyphs();
 		input = gc.getInput();
 		Jazzy = new Music("res/Blusy.ogg");
 		pouet = new Sound("res/pouetpouet-SF.ogg");
