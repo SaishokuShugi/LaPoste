@@ -167,7 +167,7 @@ public class PhasePlateform extends BasicGameState
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 
-		if ((Game.input.isKeyDown(Input.KEY_ESCAPE) || Game.input.isKeyDown(Input.KEY_P)) & timeP > 250
+		if ((Game.input.isKeyPressed(Input.KEY_ESCAPE) || Game.input.isKeyPressed(Input.KEY_P)) & timeP > 250
 				|| Game.nlettres <= 0)
 			{
 				timeP = 0;
@@ -186,7 +186,7 @@ public class PhasePlateform extends BasicGameState
 				Vperso.x = .3f;
 				facingLeft = false;
 			}
-		if (Game.input.isKeyDown(Input.KEY_ENTER)& hitboxPerso.intersects(Portes.get(0)) )
+		if (Game.input.isKeyPressed(Input.KEY_ENTER)& hitboxPerso.intersects(Portes.get(0)) )
 		{
 			sbg.enterState(7);
 		}
