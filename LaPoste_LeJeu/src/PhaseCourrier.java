@@ -67,7 +67,7 @@ public class PhaseCourrier extends BasicGameState
 					}
 			}
 		compteur+=delta;
-		if (Game.input.isKeyPressed(Input.KEY_ENTER) && timep > 120)
+		if (Game.input.isKeyPressed(Input.KEY_ENTER) && timep > 60)
 			{
 				timep = 0;
 				System.out.println(PhasePlateform.Lettre.size());
@@ -83,7 +83,7 @@ public class PhaseCourrier extends BasicGameState
 				if (PhasePlateform.Lettre.size()<=0) {
 					sbg.enterState(8);}
 			}
-		if(Game.input.isKeyPressed(Input.KEY_ESCAPE)&& timep > 120)
+		if(Game.input.isKeyPressed(Input.KEY_ESCAPE)&& timep > 60)
 			{
 				timep =0;
 				sbg.enterState(5);

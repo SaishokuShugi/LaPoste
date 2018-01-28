@@ -224,7 +224,9 @@ public class PhaseVoiture extends BasicGameState
 
 		if (iscarhit)
 		{
+			System.out.println(Game.nlettres);
 			Game.nlettres--;
+			System.out.println(Game.nlettres);
 			lastPerte.add(new PaperParticle());
 			timerp = time;
 		}
