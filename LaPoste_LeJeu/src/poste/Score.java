@@ -1,3 +1,4 @@
+package poste;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -6,7 +7,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class GameOver extends BasicGameState
+public class Score extends BasicGameState
 {
 
 	@Override
@@ -27,9 +28,9 @@ public class GameOver extends BasicGameState
 		g.drawRect(635, 745, 200, 50);
 		g.setLineWidth(8);
 		g.drawRect(435, 300, 600, 100);
-		Game.titre.drawString(630, 330, "Game Over");
+		Game.titre.drawString(630, 330, "Score ="+Game.score);
 		Game.slicker.drawString(700, 760, "Exit");
-	}
+	} 
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -46,7 +47,7 @@ public class GameOver extends BasicGameState
 	public int getID()
 	{
 		// TODO Stub de la méthode généré automatiquement
-		return 6;
+		return 8;
 	}
 
 }

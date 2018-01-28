@@ -1,3 +1,4 @@
+package poste;
 
 public class PaperParticle
 {
