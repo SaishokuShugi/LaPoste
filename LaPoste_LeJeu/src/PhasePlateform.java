@@ -212,6 +212,7 @@ public class PhasePlateform extends BasicGameState
 						if (hitboxPerso.intersects(p))
 							{
 								porteOpen = Portes.indexOf(p);
+								System.out.println(porteOpen);
 								sbg.enterState(7);
 							}
 					}

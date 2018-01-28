@@ -30,6 +30,7 @@ public class Game extends StateBasedGame
 	public static int					nlettres	= 20;
 	public static Image					shuriken;
 	public static int					score =0;
+	public static double 				timeinit=System.currentTimeMillis();
 
 	public Game(String name)
 	{
@@ -71,13 +72,16 @@ public class Game extends StateBasedGame
 		random = new Random();
 		shuriken = new Image("res/enveloppeShuriken.png");
 
-		// addState(new MenuStart());
-		// addState(new PhaseVoiture());
+		addState(new MenuStart());
+		addState(new PhaseVoiture());
 		addState(new PhasePlateform());
 		addState(new Parametres());
 		addState(new Pause());
 		addState(new GameOver());
 		addState(new PhaseCourrier());
+		addState(new Score());
+		
+		
 		Voiture.voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
 		nlettres /= (Parametres.difficulte + 1);
 
