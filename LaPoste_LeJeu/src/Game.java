@@ -72,7 +72,7 @@ public class Game extends StateBasedGame
 		random = new Random();
 		shuriken = new Image("res/enveloppeShuriken.png");
 
-		 addState(new MenuStart());
+		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new PhasePlateform());
 		addState(new Parametres());
