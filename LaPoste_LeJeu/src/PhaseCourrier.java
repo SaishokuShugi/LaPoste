@@ -35,11 +35,12 @@ public class PhaseCourrier extends BasicGameState
 
 		boite.draw(800, 0);
 		Game.slicker.drawString(700, 850, propriétairePorte);
-		for (int i = 0; i < lettrevisible; i++)
-			{
+		//for (int i = 0; i < lettrevisible; i++)
+		//	{
+		int i = lettrevisible;
 				enveloppes.get(i).draw(0, 0);
 				Game.slicker.drawString(225, 300, PhasePlateform.Lettre.get(i));
-			}
+		//	}
 	}
 
 	@Override
@@ -47,7 +48,7 @@ public class PhaseCourrier extends BasicGameState
 	{
 		// TODO Auto-generated method stub
 		timep += delta;
-		if (Game.input.isKeyDown(Input.KEY_UP))
+		if (Game.input.isKeyPressed(Input.KEY_UP))
 			{
 				if (lettrevisible < PhasePlateform.Lettre.size() - 1 & compteur > 120)
 					{
@@ -55,15 +56,26 @@ public class PhaseCourrier extends BasicGameState
 						compteur = 0;
 					}
 			}
-		compteur++;
+		if (Game.input.isKeyPressed(Input.KEY_DOWN))
+			{
+				if (lettrevisible > 0 & compteur > 120)
+					{
+						lettrevisible--;
+						compteur = 0;
+					}
+			}
+		compteur+=delta;
 		if (Game.input.isKeyPressed(Input.KEY_ENTER) && timep > 120)
 			{
 				timep = 0;
-				lettrevisible = lettrevisible >= PhasePlateform.Lettre.size() ? PhasePlateform.Lettre.size() - 1
-						: lettrevisible;
 				if (lettrevisible >= 0)
+					if(PhasePlateform.Lettre.get(lettrevisible)==propriétairePorte)
+						Game.score++;
 					PhasePlateform.Lettre.remove(lettrevisible);
-				Game.score++;
+			}
+		if(Game.input.isKeyPressed(Input.KEY_ESCAPE)&& timep > 120)
+			{
+				timep =0;
 				sbg.enterState(5);
 			}
 	}

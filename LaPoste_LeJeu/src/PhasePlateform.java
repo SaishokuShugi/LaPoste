@@ -20,19 +20,19 @@ public class PhasePlateform extends BasicGameState
 	protected Image						bg, imgPerso;
 	protected SpriteSheet				perso;
 	protected Vector2f					Pperso;
-	final float							g			= 9.81f;
+	final float							g				= 9.81f;
 	private Rectangle					hitboxPerso;
-	private static ArrayList<Rectangle>	Platforms	= new ArrayList<Rectangle>();
-	private static ArrayList<Rectangle>	Portes	= new ArrayList<Rectangle>();
-	public static ArrayList<String> Destinataire =new ArrayList<String>();
-	public static ArrayList<String> Propriétaire =new ArrayList<String>();
-	public static ArrayList<String> Lettre =new ArrayList<String>();
-	public static int 							porteOpen	=0;
+	private static ArrayList<Rectangle>	Platforms		= new ArrayList<Rectangle>();
+	private static ArrayList<Rectangle>	Portes			= new ArrayList<Rectangle>();
+	public static ArrayList<String>		Destinataire	= new ArrayList<String>();
+	public static ArrayList<String>		Propriétaire	= new ArrayList<String>();
+	public static ArrayList<String>		Lettre			= new ArrayList<String>();
+	public static int					porteOpen		= 0;
 	private Vector2f					Vperso;
-	private boolean						facingLeft	= false, onGround = false;
-	private boolean[]					isvoid		= new boolean[16];
-	private Image[]						bgtex		= new Image[16];
-	protected float						timeP		= 0;
+	private boolean						facingLeft		= false, onGround = false;
+	private boolean[]					isvoid			= new boolean[16];
+	private Image[]						bgtex			= new Image[16];
+	protected float						timeP			= 0;
 	private SpriteSheet					bgvoid, bgmaison, bgscales;
 
 	public PhasePlateform()
@@ -82,46 +82,62 @@ public class PhasePlateform extends BasicGameState
 						Platforms.add(new Rectangle(i * Game.app.getWidth() * .25f,
 								(j + 1) * Game.app.getHeight() * .25f, Game.app.getWidth() * .25f, 1));
 				}
-		
-		
-		Platforms.add(new Rectangle(400+74,225+10,100,1));
-		Platforms.add(new Rectangle(400+75,225+113,99,1));
-		Platforms.add(new Rectangle(400+218,225+60,105,1));
-		Platforms.add(new Rectangle(400+221,225+150,101,1));
-		Platforms.add(new Rectangle(0+24,450+3,16,1));
-		Platforms.add(new Rectangle(0+80,450+35,41,1));
-		Platforms.add(new Rectangle(0+181,450+79,23,1));
-		Platforms.add(new Rectangle(0+147,450+150,25,1));
-		Platforms.add(new Rectangle(0+207,450+142,17,1));
-		Platforms.add(new Rectangle(0+263,450+114,17,1));
-		Platforms.add(new Rectangle(0+317,450+78,17,1));
-		Platforms.add(new Rectangle(0+372,450+51,18,1));
-		Platforms.add(new Rectangle(0+311,450+18,18,1));
-		Platforms.add(new Rectangle(0+256,450+3,16,1));
-		Platforms.add(new Rectangle(800+6,675+5,18,1));
-		Platforms.add(new Rectangle(800+57,675+13,21,1));
-		Platforms.add(new Rectangle(800+109,675+18,26,1));
-		Platforms.add(new Rectangle(800+183,675+58,40,1));
-		Platforms.add(new Rectangle(800+186,675+142,34,1));
-		Platforms.add(new Rectangle(800+273,675+19,26,1));
-		Platforms.add(new Rectangle(800+341,675+18,26,1));
-		Platforms.add(new Rectangle(800+384,675+5,14,1)); 
-		Portes.add(new Rectangle(207,147,31,61));
+
+		Platforms.add(new Rectangle(400 + 74, 225 + 10, 100, 1));
+		Platforms.add(new Rectangle(400 + 75, 225 + 113, 99, 1));
+		Platforms.add(new Rectangle(400 + 218, 225 + 60, 105, 1));
+		Platforms.add(new Rectangle(400 + 221, 225 + 150, 101, 1));
+		Platforms.add(new Rectangle(0 + 24, 450 + 3, 16, 1));
+		Platforms.add(new Rectangle(0 + 80, 450 + 35, 41, 1));
+		Platforms.add(new Rectangle(0 + 181, 450 + 79, 23, 1));
+		Platforms.add(new Rectangle(0 + 147, 450 + 150, 25, 1));
+		Platforms.add(new Rectangle(0 + 207, 450 + 142, 17, 1));
+		Platforms.add(new Rectangle(0 + 263, 450 + 114, 17, 1));
+		Platforms.add(new Rectangle(0 + 317, 450 + 78, 17, 1));
+		Platforms.add(new Rectangle(0 + 372, 450 + 51, 18, 1));
+		Platforms.add(new Rectangle(0 + 311, 450 + 18, 18, 1));
+		Platforms.add(new Rectangle(0 + 256, 450 + 3, 16, 1));
+		Platforms.add(new Rectangle(800 + 6, 675 + 5, 18, 1));
+		Platforms.add(new Rectangle(800 + 57, 675 + 13, 21, 1));
+		Platforms.add(new Rectangle(800 + 109, 675 + 18, 26, 1));
+		Platforms.add(new Rectangle(800 + 183, 675 + 58, 40, 1));
+		Platforms.add(new Rectangle(800 + 186, 675 + 142, 34, 1));
+		Platforms.add(new Rectangle(800 + 273, 675 + 19, 26, 1));
+		Platforms.add(new Rectangle(800 + 341, 675 + 18, 26, 1));
+		Platforms.add(new Rectangle(800 + 384, 675 + 5, 14, 1));
+
+		Portes.add(new Rectangle(207, 147, 31, 61));
+		Portes.add(new Rectangle(1007, 147, 31, 61));
+		Portes.add(new Rectangle(1407, 147, 31, 61));
+		Portes.add(new Rectangle(1007, 397, 31, 61));
+		Portes.add(new Rectangle(1407, 397, 31, 61));
+		Portes.add(new Rectangle(607, 597, 31, 61));
+		Portes.add(new Rectangle(1407, 597, 31, 61));
+		Portes.add(new Rectangle(207, 822, 31, 61));
+		Portes.add(new Rectangle(607, 822, 31, 61));
+		Portes.add(new Rectangle(1407, 822, 31, 61));
+
 	}
-	private void initdestinataire() throws IOException {
+
+	private void initdestinataire() throws IOException
+	{
 		BufferedReader bf = new BufferedReader(new FileReader("res/Dico.txt"));
-		while (bf.readLine()!=null) {
-			Propriétaire.add(bf.readLine());
-		}
-		for (int i=0;i<20;i++) {
-			Propriétaire.set(i,Propriétaire.get(Game.random.nextInt(Propriétaire.size())));
-		}
-		for (int j=0;j<10;j++) {
-			Destinataire.add(Propriétaire.get(j));
-		}
-		for (int k=0;k<Game.nlettres;k++) {
-			Lettre.add(Destinataire.get(Game.random.nextInt(Destinataire.size())));
-		}
+		while (bf.readLine() != null)
+			{
+				Propriétaire.add(bf.readLine());
+			}
+		for (int i = 0; i < 20; i++)
+			{
+				Propriétaire.set(i, Propriétaire.get(Game.random.nextInt(Propriétaire.size())));
+			}
+		for (int j = 0; j < 10; j++)
+			{
+				Destinataire.add(Propriétaire.get(j));
+			}
+		for (int k = 0; k < Game.nlettres; k++)
+			{
+				Lettre.add(Destinataire.get(Game.random.nextInt(Destinataire.size())));
+			}
 
 	}
 
@@ -141,12 +157,14 @@ public class PhasePlateform extends BasicGameState
 		hitboxPerso = new Rectangle(Pperso.x + 10, Pperso.y + 15, 42 - 20, 74 - 15);
 		Vperso = new Vector2f(0, 0);
 		initmap();
-		try {
-			initdestinataire();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		try
+			{
+				initdestinataire();
+			} catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	@Override
@@ -158,7 +176,7 @@ public class PhasePlateform extends BasicGameState
 					g.drawImage(bgtex[j + 4 * i], 400 * j, 225 * i);
 				}
 		g.drawImage(imgPerso, Pperso.x, Pperso.y);
-		g.draw(hitboxPerso);
+		//g.draw(hitboxPerso);
 		Game.shuriken.draw(0, 0);
 		Game.slicker.drawString(20, 5, " X " + Integer.toString(Game.nlettres));
 	}
@@ -186,10 +204,19 @@ public class PhasePlateform extends BasicGameState
 				Vperso.x = .3f;
 				facingLeft = false;
 			}
-		if (Game.input.isKeyPressed(Input.KEY_ENTER)& hitboxPerso.intersects(Portes.get(0)) )
-		{
-			sbg.enterState(7);
-		}
+
+		if (Game.input.isKeyPressed(Input.KEY_ENTER))
+			{
+				for (Rectangle p : Portes)
+					{
+						if (hitboxPerso.intersects(p))
+							{
+								porteOpen = Portes.indexOf(p);
+								sbg.enterState(7);
+							}
+					}
+			}
+
 		if ((Game.input.isKeyDown(Input.KEY_SPACE) || Game.input.isKeyDown(Input.KEY_UP)) & onGround)
 			{
 				Vperso.y = -.5f;
