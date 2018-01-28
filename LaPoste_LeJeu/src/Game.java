@@ -1,5 +1,6 @@
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
@@ -92,7 +93,6 @@ public class Game extends StateBasedGame
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		System.setProperty("java.library.path", "SuperMailBoy_lib");
 		try
 			{
 				app = new AppGameContainer(new Game("jeu"));
