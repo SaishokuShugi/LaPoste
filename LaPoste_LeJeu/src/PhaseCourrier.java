@@ -13,7 +13,7 @@ public class PhaseCourrier extends BasicGameState {
 	private Image boite;
 	private ArrayList<Image> enveloppes = new ArrayList<Image>();
 	private int lettrevisible=0;
-	private int compteur=0;
+	private int compteur=0,timep=0; 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sgb) throws SlickException {
 		// TODO Auto-generated method stub
@@ -27,6 +27,7 @@ public class PhaseCourrier extends BasicGameState {
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
+		
 		boite.draw(800, 0);
 		Game.slicker.drawString(700, 850, propriétairePorte);
 		for(int i=0;i<lettrevisible;i++) {
@@ -38,6 +39,7 @@ public class PhaseCourrier extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		// TODO Auto-generated method stub
+		timep+=delta;
 		if (Game.input.isKeyDown(Input.KEY_UP)) {
 			if  (lettrevisible<PhasePlateform.Lettre.size()-1 & compteur>120) {
 				lettrevisible++;
@@ -45,7 +47,8 @@ public class PhaseCourrier extends BasicGameState {
 			}
 		}
 		compteur++;
-		if (Game.input.isKeyDown(Input.KEY_ENTER)) {
+		if (Game.input.isKeyDown(Input.KEY_ENTER)&&timep>120) {
+			timep=0;
 			PhasePlateform.Lettre.remove(lettrevisible);
 			//incrémenter le score
 		}

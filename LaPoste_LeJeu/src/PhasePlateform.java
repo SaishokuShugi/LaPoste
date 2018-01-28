@@ -25,7 +25,7 @@ public class PhasePlateform extends BasicGameState
 	private static ArrayList<Rectangle>	Platforms	= new ArrayList<Rectangle>();
 	private static ArrayList<Rectangle>	Portes	= new ArrayList<Rectangle>();
 	public static ArrayList<String> Destinataire =new ArrayList<String>();
-	private static ArrayList<String> Propriétaire =new ArrayList<String>();
+	public static ArrayList<String> Propriétaire =new ArrayList<String>();
 	public static ArrayList<String> Lettre =new ArrayList<String>();
 	public static int 							porteOpen	=0;
 	private Vector2f					Vperso;
@@ -122,30 +122,6 @@ public class PhasePlateform extends BasicGameState
 		for (int k=0;k<Game.nlettres;k++) {
 			Lettre.add(Destinataire.get(Game.random.nextInt(Destinataire.size())));
 		}
-
-		Platforms.add(new Rectangle(400 + 74, 225 + 10, 100, 1));
-		Platforms.add(new Rectangle(400 + 75, 225 + 113, 99, 1));
-		Platforms.add(new Rectangle(400 + 218, 225 + 60, 105, 1));
-		Platforms.add(new Rectangle(400 + 221, 225 + 150, 101, 1));
-		Platforms.add(new Rectangle(0 + 24, 450 + 3, 16, 1));
-		Platforms.add(new Rectangle(0 + 80, 450 + 35, 41, 1));
-		Platforms.add(new Rectangle(0 + 181, 450 + 79, 23, 1));
-		Platforms.add(new Rectangle(0 + 147, 450 + 150, 25, 1));
-		Platforms.add(new Rectangle(0 + 207, 450 + 142, 17, 1));
-		Platforms.add(new Rectangle(0 + 263, 450 + 114, 17, 1));
-		Platforms.add(new Rectangle(0 + 317, 450 + 78, 17, 1));
-		Platforms.add(new Rectangle(0 + 372, 450 + 51, 18, 1));
-		Platforms.add(new Rectangle(0 + 311, 450 + 18, 18, 1));
-		Platforms.add(new Rectangle(0 + 256, 450 + 3, 16, 1));
-		Platforms.add(new Rectangle(800 + 6, 675 + 5, 18, 1));
-		Platforms.add(new Rectangle(800 + 57, 675 + 13, 21, 1));
-		Platforms.add(new Rectangle(800 + 109, 675 + 18, 26, 1));
-		Platforms.add(new Rectangle(800 + 183, 675 + 58, 40, 1));
-		Platforms.add(new Rectangle(800 + 186, 675 + 142, 34, 1));
-		Platforms.add(new Rectangle(800 + 273, 675 + 19, 26, 1));
-		Platforms.add(new Rectangle(800 + 341, 675 + 18, 26, 1));
-		Platforms.add(new Rectangle(800 + 384, 675 + 5, 14, 1));
-
 
 	}
 
