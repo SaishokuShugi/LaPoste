@@ -72,7 +72,7 @@ public class Game extends StateBasedGame
 		random = new Random();
 		shuriken = new Image("res/enveloppeShuriken.png");
 
-		 addState(new MenuStart());
+		addState(new MenuStart());
 		addState(new PhaseVoiture());
 		addState(new PhasePlateform());
 		addState(new Parametres());
@@ -92,7 +92,7 @@ public class Game extends StateBasedGame
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-
+		System.setProperty("java.library.path", "SuperMailBoy_lib");
 		try
 			{
 				app = new AppGameContainer(new Game("jeu"));

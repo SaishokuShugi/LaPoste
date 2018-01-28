@@ -18,7 +18,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PhasePlateform extends BasicGameState
 {
 	protected Image						bg, imgPerso;
-	protected SpriteSheet				perso;
+	protected SpriteSheet				perso, persoL, persoR, persoJ;
 	protected Vector2f					Pperso;
 	final float							g				= 9.81f;
 	private Rectangle					hitboxPerso;
