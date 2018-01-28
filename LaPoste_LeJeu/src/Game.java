@@ -68,12 +68,14 @@ public class Game extends StateBasedGame
 		boom = new Animation(new SpriteSheet("res/explosion.png", 128, 128), 100);
 		random = new Random();
 		shuriken = new Image("res/enveloppeShuriken.png");
-		addState(new MenuStart());
-		addState(new PhaseVoiture());
+		
+		//addState(new MenuStart());
+		//addState(new PhaseVoiture());
 		addState(new PhasePlateform());
 		addState(new Parametres());
 		addState(new Pause());
 		addState(new GameOver());
+		addState(new PhaseCourrier());
 		Voiture.voituresImg = new SpriteSheet("res/SpriteSheetCar.png", 128, 128);
 		nlettres /= (Parametres.difficulte + 1);
 

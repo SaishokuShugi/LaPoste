@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.newdawn.slick.GameContainer;
@@ -19,6 +23,11 @@ public class PhasePlateform extends BasicGameState
 	final float							g			= 9.81f;
 	private Rectangle					hitboxPerso;
 	private static ArrayList<Rectangle>	Platforms	= new ArrayList<Rectangle>();
+	private static ArrayList<Rectangle>	Portes	= new ArrayList<Rectangle>();
+	public static ArrayList<String> Destinataire =new ArrayList<String>();
+	private static ArrayList<String> Propriétaire =new ArrayList<String>();
+	public static ArrayList<String> Lettre =new ArrayList<String>();
+	public static int 							porteOpen	=0;
 	private Vector2f					Vperso;
 	private boolean						facingLeft	= false, onGround = false;
 	private boolean[]					isvoid		= new boolean[16];
@@ -97,7 +106,22 @@ public class PhasePlateform extends BasicGameState
 		Platforms.add(new Rectangle(800+273,675+19,26,1));
 		Platforms.add(new Rectangle(800+341,675+18,26,1));
 		Platforms.add(new Rectangle(800+384,675+5,14,1)); 
-		
+		Portes.add(new Rectangle(207,147,31,61));
+	}
+	private void initdestinataire() throws IOException {
+		BufferedReader bf = new BufferedReader(new FileReader("res/Dico.txt"));
+		while (bf.readLine()!=null) {
+			Propriétaire.add(bf.readLine());
+		}
+		for (int i=0;i<20;i++) {
+			Propriétaire.set(i,Propriétaire.get(Game.random.nextInt(Propriétaire.size())));
+		}
+		for (int j=0;j<10;j++) {
+			Destinataire.add(Propriétaire.get(j));
+		}
+		for (int k=0;k<Game.nlettres;k++) {
+			Lettre.add(Destinataire.get(Game.random.nextInt(Destinataire.size())));
+		}
 	}
 
 	@Override
@@ -115,7 +139,12 @@ public class PhasePlateform extends BasicGameState
 		hitboxPerso = new Rectangle(Pperso.x+10, Pperso.y+15, 42-20, 74-15); 
 		Vperso = new Vector2f(0, 0);
 		initmap();
-
+		try {
+			initdestinataire();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -155,6 +184,10 @@ public class PhasePlateform extends BasicGameState
 				Vperso.x = .3f;
 				facingLeft = false;
 			}
+		if (Game.input.isKeyDown(Input.KEY_ENTER)& hitboxPerso.intersects(Portes.get(0)) )
+		{
+			sbg.enterState(7);
+		}
 		if ((Game.input.isKeyDown(Input.KEY_SPACE) || Game.input.isKeyDown(Input.KEY_UP)) & onGround)
 			{
 				Vperso.y = -.5f;
