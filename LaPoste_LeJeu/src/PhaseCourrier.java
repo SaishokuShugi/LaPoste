@@ -10,7 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 //la fatigue
 public class PhaseCourrier extends BasicGameState
 {
-	private String				propriétairePorte;
+	private String				proprietairePorte;
 	private Image				boite;
 	private ArrayList<Image>	enveloppes		= new ArrayList<Image>();
 	private int					lettrevisible	= 0;
@@ -20,7 +20,7 @@ public class PhaseCourrier extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sgb) throws SlickException
 	{
 		// TODO Auto-generated method stub
-		propriétairePorte = PhasePlateform.Destinataire.get(PhasePlateform.porteOpen);
+		proprietairePorte = PhasePlateform.Destinataire.get(PhasePlateform.porteOpen);
 		boite = new Image("res/Boite aux Lettres.png");
 		for (int i = 0; i < Game.nlettres; i++)
 			{
@@ -34,7 +34,7 @@ public class PhaseCourrier extends BasicGameState
 		// TODO Auto-generated method stub
 
 		boite.draw(800, 0);
-		Game.slicker.drawString(700, 850, propriétairePorte);
+		Game.slicker.drawString(700, 850, proprietairePorte);
 		//for (int i = 0; i < lettrevisible; i++)
 		//	{
 		int i = lettrevisible;
@@ -69,7 +69,7 @@ public class PhaseCourrier extends BasicGameState
 			{
 				timep = 0;
 				if (lettrevisible >= 0)
-					if(PhasePlateform.Lettre.get(lettrevisible)==propriétairePorte)
+					if(PhasePlateform.Lettre.get(lettrevisible)==proprietairePorte)
 						Game.score++;
 					PhasePlateform.Lettre.remove(lettrevisible);
 			}
