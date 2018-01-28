@@ -196,7 +196,7 @@ public class PhasePlateform extends BasicGameState
 				sbg.enterState(4);
 			}
 		timeP += delta;
-		Vperso.scale(.999f);
+		Vperso.scale(.999f); 
 		Vperso.y += .001 * delta;
 		if (Game.input.isKeyDown(Input.KEY_LEFT))
 			{
