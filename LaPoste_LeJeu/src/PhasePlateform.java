@@ -25,10 +25,11 @@ public class PhasePlateform extends BasicGameState
 	private static ArrayList<Rectangle>	Platforms		= new ArrayList<Rectangle>();
 	private static ArrayList<Rectangle>	Portes			= new ArrayList<Rectangle>();
 	public static ArrayList<String>		Destinataire	= new ArrayList<String>();
-	public static ArrayList<String>		Propriétaire	= new ArrayList<String>();
+	public static ArrayList<String>		Proprietaire	= new ArrayList<String>();
 	public static ArrayList<String>		Lettre			= new ArrayList<String>();
 	public static int					porteOpen		= 0;
 	private Vector2f					Vperso;
+	@SuppressWarnings("unused")
 	private boolean						facingLeft		= false, onGround = false;
 	private boolean[]					isvoid			= new boolean[16];
 	private Image[]						bgtex			= new Image[16];
@@ -124,15 +125,15 @@ public class PhasePlateform extends BasicGameState
 		BufferedReader bf = new BufferedReader(new FileReader("res/Dico.txt"));
 		while (bf.readLine() != null)
 			{
-				Propriétaire.add(bf.readLine());
+				Proprietaire.add(bf.readLine());
 			}
 		for (int i = 0; i < 20; i++)
 			{
-				Propriétaire.set(i, Propriétaire.get(Game.random.nextInt(Propriétaire.size())));
+				Proprietaire.set(i, Proprietaire.get(Game.random.nextInt(Proprietaire.size())));
 			}
 		for (int j = 0; j < 10; j++)
 			{
-				Destinataire.add(Propriétaire.get(j));
+				Destinataire.add(Proprietaire.get(j));
 			}
 		for (int k = 0; k < Game.nlettres; k++)
 			{

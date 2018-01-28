@@ -38,6 +38,7 @@ public class MenuStart extends BasicGameState
 		Game.slicker.drawString(660, 660, "Parametres", Color.lightGray);
 		Game.slicker.drawString(700, 760, "Exit", Color.lightGray);
 		Game.titre.drawString(600, 330, "SuperMailBoy");
+
 		g.setColor(Color.blue);
 		g.setLineWidth(5);
 		g.drawRect(635, 545 + ((float) choix * 100), 200, 50);

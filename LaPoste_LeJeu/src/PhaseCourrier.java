@@ -10,7 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 //la fatigue
 public class PhaseCourrier extends BasicGameState
 {
-	private String				propriétairePorte;
+	private String				proprietairePorte;
 	private Image				boite;
 	private ArrayList<Image>	enveloppes		= new ArrayList<Image>();
 	private int					lettrevisible	= 0;
@@ -20,9 +20,6 @@ public class PhaseCourrier extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sgb) throws SlickException
 	{
 		// TODO Auto-generated method stub
-		System.out.println(PhasePlateform.porteOpen);
-		propriétairePorte = PhasePlateform.Destinataire.get(PhasePlateform.porteOpen);
-		System.out.println(propriétairePorte);
 		boite = new Image("res/Boite aux Lettres.png");
 		for (int i = 0; i < Game.nlettres; i++)
 			{
@@ -34,9 +31,10 @@ public class PhaseCourrier extends BasicGameState
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		// TODO Auto-generated method stub
-
+		proprietairePorte = PhasePlateform.Destinataire.get(PhasePlateform.porteOpen);
 		boite.draw(800, 0);
-		Game.slicker.drawString(1300, 450, propriétairePorte);
+
+		Game.slicker.drawString(1250, 450, proprietairePorte);
 		//for (int i = 0; i < lettrevisible; i++)
 		//	{
 		int i = lettrevisible;
@@ -50,7 +48,7 @@ public class PhaseCourrier extends BasicGameState
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
 		// TODO Auto-generated method stub
-		propriétairePorte = PhasePlateform.Destinataire.get(PhasePlateform.porteOpen);
+		proprietairePorte = PhasePlateform.Destinataire.get(PhasePlateform.porteOpen);
 		timep += delta;
 		if (Game.input.isKeyPressed(Input.KEY_UP))
 			{
@@ -76,7 +74,7 @@ public class PhaseCourrier extends BasicGameState
 				
 				
 				if (lettrevisible >= 0)
-					if(PhasePlateform.Lettre.get(lettrevisible)==propriétairePorte)
+					if(PhasePlateform.Lettre.get(lettrevisible)==proprietairePorte)
 						Game.score+=1*10000000f/(System.currentTimeMillis()-Game.timeinit);
 				if 	(PhasePlateform.Lettre.size()!=0)
 					PhasePlateform.Lettre.remove(lettrevisible);
