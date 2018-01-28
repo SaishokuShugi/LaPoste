@@ -29,7 +29,7 @@ public class Score extends BasicGameState
 		g.drawRect(435, 300, 600, 100);
 		Game.titre.drawString(630, 330, "Score ="+Game.score);
 		Game.slicker.drawString(700, 760, "Exit");
-	}
+	} 
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException

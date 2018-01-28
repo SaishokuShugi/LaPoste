@@ -14,7 +14,7 @@ public class VoitureDown extends Voiture
 		if (voie = Game.random.nextBoolean())
 			x += 128f;
 
-	}
+	} 
 
 	@Override
 	public boolean update(int delta)

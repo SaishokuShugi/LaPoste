@@ -19,7 +19,7 @@ public abstract class Voiture
 		if (destroyed)
 			{
 				if ((PhaseVoiture.time - timedest) < 16 * Game.boom.f)
-					{
+	 				{
 						Game.boom.draw(x, y, g, PhaseVoiture.time - timedest);
 						return false;
 					} else

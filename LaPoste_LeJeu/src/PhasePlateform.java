@@ -165,7 +165,7 @@ public class PhasePlateform extends BasicGameState
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			} 
 	}
 
 	@Override

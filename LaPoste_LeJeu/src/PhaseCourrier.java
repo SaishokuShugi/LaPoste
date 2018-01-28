@@ -87,7 +87,7 @@ public class PhaseCourrier extends BasicGameState
 			{
 				timep =0;
 				sbg.enterState(5);
-			}
+			} 
 	}
 
 	@Override
