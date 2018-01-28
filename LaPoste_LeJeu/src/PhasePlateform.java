@@ -35,6 +35,7 @@ public class PhasePlateform extends BasicGameState
 	private Image[]						bgtex			= new Image[16];
 	protected float						timeP			= 0;
 	private SpriteSheet					bgvoid, bgmaison, bgscales;
+	boolean								nblettrecharge=false;
 
 	public PhasePlateform()
 	{
@@ -135,10 +136,6 @@ public class PhasePlateform extends BasicGameState
 			{
 				Destinataire.add(Proprietaire.get(j));
 			}
-		for (int k = 0; k < Game.nlettres; k++)
-			{
-				Lettre.add(Destinataire.get(Game.random.nextInt(Destinataire.size())));
-			}
 
 	}
 
@@ -185,7 +182,13 @@ public class PhasePlateform extends BasicGameState
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
 	{
-
+		if (!nblettrecharge) {
+			for (int k = 0; k < Game.nlettres; k++)
+			{
+				Lettre.add(Destinataire.get(Game.random.nextInt(Destinataire.size())));
+			}
+			nblettrecharge=true;
+		}
 		if ((Game.input.isKeyPressed(Input.KEY_ESCAPE) || Game.input.isKeyPressed(Input.KEY_P)) & timeP > 250
 				|| Game.nlettres <= 0)
 			{
@@ -213,7 +216,7 @@ public class PhasePlateform extends BasicGameState
 						if (hitboxPerso.intersects(p))
 							{
 								porteOpen = Portes.indexOf(p);
-								System.out.println(porteOpen);
+								//System.out.println(porteOpen);
 								sbg.enterState(7);
 							}
 					}
