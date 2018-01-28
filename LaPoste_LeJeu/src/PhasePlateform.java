@@ -29,6 +29,7 @@ public class PhasePlateform extends BasicGameState
 	public static ArrayList<String>		Lettre			= new ArrayList<String>();
 	public static int					porteOpen		= 0;
 	private Vector2f					Vperso;
+	@SuppressWarnings("unused")
 	private boolean						facingLeft		= false, onGround = false;
 	private boolean[]					isvoid			= new boolean[16];
 	private Image[]						bgtex			= new Image[16];
