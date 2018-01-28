@@ -20,7 +20,7 @@ public class PhaseCourrier extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sgb) throws SlickException
 	{
 		// TODO Auto-generated method stub
-		proprietairePorte = PhasePlateform.Destinataire.get(PhasePlateform.porteOpen);
+		
 		boite = new Image("res/Boite aux Lettres.png");
 		for (int i = 0; i < Game.nlettres; i++)
 			{
@@ -32,9 +32,9 @@ public class PhaseCourrier extends BasicGameState
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		// TODO Auto-generated method stub
-
+		proprietairePorte = PhasePlateform.Destinataire.get(PhasePlateform.porteOpen);
 		boite.draw(800, 0);
-		Game.slicker.drawString(700, 850, proprietairePorte);
+		Game.slicker.drawString(1250, 450, proprietairePorte);
 		//for (int i = 0; i < lettrevisible; i++)
 		//	{
 		int i = lettrevisible;
